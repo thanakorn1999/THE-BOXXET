@@ -1,4 +1,3 @@
-import React from 'react';
 import { Constants, Translations } from "../constants/Constants"; // import Constants จากไฟล์ Constants.tsx
 // import { Link } from 'react-router-dom';
 
@@ -39,7 +38,15 @@ class Button {
       );
     }
   }
-    
+  
+  // public static ContractButton(language:string){
+  //   const translations: {[key:string]:Translations} = Constants.translations
+  //   return (
+  //     <button className="bg-customBlue text-customYellow py-2 px-4 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all">
+  //       {translations[language].contactUs}
+  //     </button>
+  //   );
+  // };
 
 }
 
