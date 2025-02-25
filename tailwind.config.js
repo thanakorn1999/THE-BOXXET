@@ -7,6 +7,10 @@ export default {
   ],
   theme: {
     extend: {
+      textIndent:{
+        8: "2rem",
+        12: "3rem",
+      },
       colors: {
         customeWhite: '#FFFFFF',
         customYellow: '#FFC905',
