@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 useState
 import NavBar from "../../component/navigationBar/NavBar";
-import { OurProject, FooterSection, AboutSection, ServiceSection, CustomerSection  } from "./Session";
+import { OurProject, FooterSection, OurServiceSection, ServiceSection, CustomerSection  } from "./Session";
 import gallery from "../../assets/page/gallary-section.png"
 import ourProject from "../../assets/page/our-project.png"
 
@@ -20,7 +20,7 @@ const GalleryPage: React.FC =() => {
         setLanguage={setLanguage}
         page='gallery'
       /> 
-      <AboutSection id = "about-gallery-section" language={language} sectionKey="Our Service" img={gallery}/>
+      <OurServiceSection id = "about-gallery-section" language={language} img={gallery}/>
       <ServiceSection id="service-section" language={language} img={""}/>
       <CustomerSection id="customer-gallery-section" language={language}/>
       <OurProject id="ourProject-gallery-section" language={language} pic={ourProject} />

@@ -29,8 +29,8 @@ import React, { useRef, useState } from "react";
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import LineIcons from "../../assets/logo/Line.png"
 import {GalleryImg} from "../../component/constants/gallery-index.ts"
+import { FaLine } from "react-icons/fa6";
 
 
 
@@ -45,25 +45,27 @@ export const Session: React.FC<SessionProps> = ({ id, language, pic, landing }) 
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <section id={id} className="mx-20 h-screen flex flex-col justify-center">
+    <section
+  id={id}
+  className="px-5 sm:px-10 md:px-20 lg:px-32 xl:px-40 flex flex-col justify-center max-w-[320px] min-h-[521px] sm:max-w-[744px] sm:min-h-[453px] lg:max-w-[1440px] lg:min-h-[537px] lg:mt-8">
       {/* Header ABOUT */}
-      <div className="justify-start text-center sm:text-left">
-        <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl leading-tight tracking-wide w-full">
+      <div className="text-center sm:text-left">
+        <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-4xl leading-tight tracking-wide">
           {translations[language].about}
         </h1>
       </div>
 
       {/* รูปภาพซ้าย */}
-      <div className="flex flex-col sm:flex-row justify-start items-center sm:items-start mt-20">
-        <img src={pic} alt={landing} className="max-w-full h-auto object-cover sm:w-1/2" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 items-center mt-10 sm:mt-16">
+        <img src={pic} alt={landing} className="w-[348px] sm:w-[348px] sm:h-[337px] lg:w-[553px] lg:h-[412px] max-w-full h-auto object-cover" />
         {/* ข้อความขวา */}
-        <div className="flex flex-col justify-center items-start text-left mx-9 sm:w-1/2 mt-9 sm:mt-0">
-          <h1 className="text-xl font-bold">{translations[language].contractUsMainTitle}</h1>
-          <h2 className="text-lg">{translations[language].contractUsSubTitle}</h2>
-          <p className="text-gray-600 mt-9 text-pretty whitespace-normal indent-10">
+        <div className="flex flex-col justify-center text-center sm:text-left">
+          <h1 className="text-xl sm:text-2xl font-bold">{translations[language].contractUsMainTitle}</h1>
+          <h2 className="text-lg sm:text-xl mt-2">{translations[language].contractUsSubTitle}</h2>
+          <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-10">
             {translations[language].contractUsdescription}
           </p>
-          <button className="bg-customBlue text-customYellow py-2 px-4 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-4">
+          <button className="bg-customBlue text-customYellow py-2 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-lg">
             {translations[language].contactUs}
           </button>
         </div>
@@ -360,48 +362,81 @@ interface AboutUsProps {
   id: string;
   language: string;
   img: string;
-  sectionKey: string;
 }
 
-export const AboutSection: React.FC<AboutUsProps> = ({ id, language, sectionKey, img }) => {
+export const AboutSection1: React.FC<AboutUsProps> = ({id, language, img}) => {
   const translations: { [key: string]: Translations } = Constants.translations;
-  if ("about" === sectionKey){
-    return (
+  return (
+    <div>
       <section id={id}>
-        <div className="relative w-full h-44 " style={{ backgroundImage: `url(${img})` }}>
-          <h1 className="absolute font-bold text-4xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+        <div className="relative lg:w-[1440px] lg:h-[172px] sm:w-[320px] sm:h-[96px] gap-6" style={{ backgroundImage: `url(${img})` }}>
+          <h1 className="absolute font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-customeWhite border-b-4 border-customYellow ml-4 sm:ml-10 md:ml-16 lg:ml-[150px] mt-10 sm:mt-12 md:mt-14">
             {translations[language].about}
           </h1>
         </div>
       </section>
-    );
-  }
+    </div>
+  )
+}
 
-  if("gallery" === sectionKey){
-    return (
-      <section id={id}>
-        <div className="relative w-full h-44 " style={{ backgroundImage: `url(${img})` }}>
-          <h1 className="absolute font-bold text-4xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
-            {translations[language].gallery}
-          </h1>
-        </div>
-      </section>
-    );
-  }
+export const GallerySection: React.FC<AboutUsProps> = ({id, language, img}) => {
+  const translations: { [key: string]: Translations } = Constants.translations;
+  return (
+    <div>
+       <section id={id}>
+         <div className="relative md:h-[453px] sm:h-[521px] lg:w-[1440px] lg:h-[172px] " style={{ backgroundImage: `url(${img})` }}>
+           <h1 className="absolute font-bold text-4xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+             {translations[language].gallery}
+           </h1>
+         </div>
+       </section>
+    </div>
+  )
+}
 
-  if("Our Service" === sectionKey){
-    return (
-      <section id={id}>
-        <div className="relative w-full h-44 " style={{ backgroundImage: `url(${img})` }}>
+export const OurServiceSection: React.FC<AboutUsProps> = ({id, language, img}) => {
+  const translations: { [key: string]: Translations } = Constants.translations;
+  return (
+    <div>
+       <section id={id}>
+        <div className="relative md:h-[453px] sm:h-[521px] lg:w-[1440px] lg:h-[172px] " style={{ backgroundImage: `url(${img})` }}>
           <h1 className="absolute font-bold text-4xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
             {translations[language].ourProject}
           </h1>
         </div>
       </section>
-    );
-  }
-  
-};
+    </div>
+  )
+}
+
+// export const AboutSection: React.FC<AboutUsProps> = ({ id, language, sectionKey, img }) => {
+//   const translations: { [key: string]: Translations } = Constants.translations;
+//   if ("about" === sectionKey){
+//     return (
+//       <section id={id}>
+//         <div className="flex lg:w-[1127px] h-[542px] sm:h-auto lg:h-[453px] gap-6" style={{ backgroundImage: `url(${img})` }}>
+//           <h1 className="absolute font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-customeWhite border-b-4 border-customYellow ml-4 sm:ml-10 md:ml-16 lg:ml-[150px] mt-10 sm:mt-12 md:mt-14">
+//             {translations[language].about}
+//           </h1>
+//         </div>
+//       </section>
+//     );
+//   }else if("gallery" === sectionKey){
+//     return (
+//       <section id={id}>
+//         <div className="relative w-full h-44 md:h-[453px] sm:h-[521px] " style={{ backgroundImage: `url(${img})` }}>
+//           <h1 className="absolute font-bold text-4xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+//             {translations[language].gallery}
+//           </h1>
+//         </div>
+//       </section>
+//     );
+//   }else if("Our Service" === sectionKey){
+//     return (
+      
+//     );
+//   }
+// };
 
 interface AboutUsDescProps {
   id: string;
@@ -413,16 +448,18 @@ export const AboutSectionDescription: React.FC<AboutUsDescProps> = ({id,language
   const langKey = language.toUpperCase();
   const translations: { [key: string]: Translations } = Constants.translations;
   return(
-    <section id={id} className="w-full h-screen flex justify-center items-center">
-      <div className="flex w-[1127px] h-[542px] gap-6">
-        <div className="text-black w-80 h-56">
-          <h1 className="text-xl">'ITSMA (อิษมา)'</h1>
-          <p className="mt-6 indent-6 text-pretty">{translations[language].aboutPage2Description1}</p>
-          <img src={aboutUsbuttom} alt="#" className="mt-6" />
+    <section id={id} className="lg:w-[1440px] lg:h-[606px] sm:w-[320px] flex justify-center items-center">
+      <div className="flex lg:w-[1127px] lg:h-[542px] sm: gap-6 ">
+        <div className="text-black w-80 h-56 sm:h-[537px] sm:w-[288px] lg:h-[542px]">
+          <h1 className="lg:text-xl md:text-xl sm:text-xs">'ITSMA (อิษมา)'</h1>
+          <div className="sm:h-[242px] lg:h-[542px]">
+            <p className="mt-6 indent-6 text-pretty sm:text-xs md:text-xl lg:text-xl">{translations[language].aboutPage2Description1}</p>
+            <img src={aboutUsbuttom} alt="#" className="mt-6" />
+          </div>
         </div>
-        <div className="w-[522px] h-[538px]">
-          <h1 className="text-5xl text-customBlue font-bold">THE BOXXET</h1>
-          <h1 className="text-xs text-black">(บริษัท เดอะ บ๊อกซ์เซ็ต จำกัด)</h1>
+        <div className="w-[522px] lg:h-[542px]">
+          <h1 className="text-5xl sm:text-xl text-customBlue font-bold">THE BOXXET</h1>
+          <h1 className="text-xs sm:text-[10px] text-black">(บริษัท เดอะ บ๊อกซ์เซ็ต จำกัด)</h1>
           <h1 className="text-xl text-black">DESIGN FOR YOUR FUTURE</h1>
           <div className="text-black flex flex-col gap-6 mt-6 text-pretty indent-6">
             <p dangerouslySetInnerHTML={{ __html: translations[language].aboutPage2Description2 }} />
@@ -444,7 +481,7 @@ interface BoothProps {
   pageId: string
 }
 
-export const BoothsSection:React.FC<BoothProps> = ({id,language, pageId}) => {
+export const BoothsSection:React.FC<BoothProps> = ({id, pageId}) => {
   const selectedBoothCategory = BoothData.find(booth => booth.id === pageId)
   const [selectedBoothId, setSelectedBoothId] = useState<string>(
     selectedBoothCategory?.data[0].title || ""
@@ -573,11 +610,37 @@ const ContractButtom: React.FC = () =>{
 
 export const ContractComponent:React.FC<AboutUsDescProps> =({id,language}) =>{
   const translations: { [key: string]: Translations } = Constants.translations;
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    mail: "",
+    subject: "",
+    description: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // ฟังก์ชันส่งอีเมล
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formattedDescription = `เรื่อง: ${formData.subject} \n\nเรียน: ทางบริษัท The Boxxet \n\n ขอแสดงความนับถือ,\n\n จาก ${formData.name} มีความประสงค์ต้องการติดต่อข้อมูลเพิ่มเติมเกี่ยวกับ${formData.description} \n\n ขอแสดงความนับถือ,\n ${formData.name}\nเบอร์ติดต่อ: ${formData.phone}`;
+
+    // สร้างข้อมูลที่ต้องการส่ง
+    const mailtoLink = `mailto:theboxxet.contact@gmail.com?subject=${encodeURIComponent(
+      formData.subject
+    )}&body=${encodeURIComponent(formattedDescription)}`;
+
+    window.location.href = mailtoLink
+  };
+
   return(
-    <section id={id} className="w-[1440px] h-[687px] flex justify-center items-center">
+    <section id={id} className="w-[1440px] h-[710px] flex justify-center items-center">
       <div className="flex ">
         <div className="flex flex-col w-[551px] h-[579px] justify-center items-center">
-          <div className="flex w-[234px] h-[244px] items-start">
+          <div className="flex w-[163px] h-[170px] items-start">
             <img src={TheBoxxetMailImg} alt="" className="h-full w-full" />
           </div>
           <div className="flex gap-1 mt-6 justify-start w-[503px] h-6">
@@ -595,15 +658,18 @@ export const ContractComponent:React.FC<AboutUsDescProps> =({id,language}) =>{
               <h1>{translations[language].address}</h1>
             </div>
           </div>
-          <div className="justify-center items-center mt-6 flex">
-            <div>
-            <h1>Chat with us.</h1>
-            <div className="flex gap-6 justify-center">
-              <a href=""><FacebookOutlinedIcon/></a>
-              <div className="w-7 h-7">
-                <a href=""><img src={LineIcons} alt="" className="w-full"/></a>
+          <div className="flex gap-1 mt-6 w-[503px] h-[66px]">
+            <FacebookOutlinedIcon/>
+            <div className="flex flex-col">
+              <h1 className="font-bold">THE BOXXET</h1>
+              <a href="https://www.facebook.com/boxxet">https://www.facebook.com/boxxet</a>
             </div>
-            </div>
+          </div>
+          <div className="flex gap-1 mt-6 w-[503px] h-[150px]">
+            <FaLine/>
+            <div className="flex flex-col">
+              <h1 className="font-bold">Line Official</h1>
+              <img src={LineIcon} alt="" />
             </div>
           </div>
         </div>
@@ -615,30 +681,40 @@ export const ContractComponent:React.FC<AboutUsDescProps> =({id,language}) =>{
             <h1 className="text-wrap">{translations[language].contractUsDescription}</h1>
           </div>
           <div className="w-[503px] h-[379px] mt-6 ">
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={sendEmail}>
               <input
                 type="text"
+                name="name"
                 placeholder="Name"
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                onChange={handleChange}
               />
               <input
                 type="text"
+                name="phone"
                 placeholder="Contact number"
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                onChange={handleChange}
               />
               <input
                 type="email"
+                name="mail"
                 placeholder="Mail"
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                onChange={handleChange}
               />
               <input
                 type="text"
+                name="subject"
                 placeholder="Subject"
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                onChange={handleChange}
               />
               <textarea
+                name="description"
                 placeholder="Description"
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 h-32"
+                onChange={handleChange}
               />
               <button
                 type="submit"
@@ -670,7 +746,7 @@ export const GalleryComponentPage: React.FC<GalleryProps> = ({ id, language }) =
   const selectedImages = currentGallery ? currentGallery.images : [];
 
   return (
-      <div id={id} className="items-center justify-center w-[1440px] h-[1860px] mr-40 ml-40 mt-8">
+      <div id={id} className="items-center justify-center w-[1440px] h-[1860px] mt-8">
           <div className="flex flex-col items-center text-left">
               <div className="flex flex-col self-start ml-40">
                   <h1>{translations[language].galleryDescription}</h1>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 useState
 import NavBar from "../../component/navigationBar/NavBar";
-import {FooterSection, AboutSection,GalleryComponentPage  } from "./Session";
+import {FooterSection, GallerySection,GalleryComponentPage  } from "./Session";
 import gallery from "../../assets/gallery/gallery-page-section.jpeg"
 
 
@@ -19,8 +19,8 @@ const GalleryPage: React.FC =() => {
         setLanguage={setLanguage}
         page='gallery'
       /> 
-      <AboutSection id = "about-gallery-section" language={language} sectionKey="Gallery" img={gallery}/>
-      < GalleryComponentPage id='1' language={language} page={1} />
+      <GallerySection id = "about-gallery-section" language={language} img={gallery}/>
+      <GalleryComponentPage id='1' language={language} page={1} />
       <FooterSection id="footer-gallery-section" language={language} />
     </div>
   )

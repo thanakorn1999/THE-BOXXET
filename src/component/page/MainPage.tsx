@@ -7,8 +7,8 @@ import {Session,OurProject,CustomerSection,FooterSection,ServiceSection} from ".
 import Button from "./Button";
 import AboutUsImage from "../../assets/page/about-us.png"
 import ourProject from "../../assets/page/our-project.png"
-import { Link } from 'react-router-dom';
-import { ServiceDropDown,ScrollToSection, LanguageDropdown } from "../utils/ComponentsUtil";
+import { Link, useNavigate } from 'react-router-dom';
+import { ServiceDropDown, LanguageDropdown } from "../utils/ComponentsUtil";
 import FooterImg from "../../assets/page/footerimg.jpeg"
 
 
@@ -57,6 +57,7 @@ const MainPage: React.FC =() => {
     };
 
     const NavSectionOfMainPage = () => {
+      const navigate = useNavigate()
       return (
         <div className="relative top-0 left-0 w-full z-50 bg-transparent ">
           <div className="container mx-auto max-w-screen-xl flex justify-between items-center py-4 px-6 text-white">
@@ -70,7 +71,7 @@ const MainPage: React.FC =() => {
             {/* ด้านขวา */}
             <div className="flex gap-4 items-center">
               <button onClick={() => setCurrentPage("home")}>{Button.LetterNavBarButton("#",language,"home")}</button>
-              <Link to={"/about-us"}>{Button.LetterNavBarButton("#", language, "about")}</Link>
+              <button onClick={() => navigate("/about-us")}>{Button.LetterNavBarButton("#", language, "about")}</button>
               <button >
                 <div className="relative">
                   <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>

@@ -21,19 +21,13 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
   
   if("about-page" === page){
     return (
-      <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white w-[1128px] h-[51px]" >
+      <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white lg:w-[1440px] h-[90px]" >
         <div className="flex justify-between items-center">
-          <div className="container flex justify-between items-center">
-            <div className="flex items-center gap-2">
+          <div className="flex container justify-between items-center">
+            <div className="flex items-center gap-2 ml-[142px]">
               <a href="/">
                 <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
               </a>
-              {/* <a
-                href="#"
-                className="font-bold text-2xl sm:text-3xl hover:text-black hover:bg-customYellow px-2 py-1 rounded"
-              >
-                THE BOXXET
-              </a> */}
             </div>
             <div className="flex gap-4 items-center">
               <Link to={"/"}>{Button.LetterNavBarButton("#",language,"home")}</Link>
@@ -77,24 +71,59 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
               <a href="/">
                 <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
               </a>
-              {/* <a
-                href="#"
-                className="font-bold text-2xl sm:text-3xl hover:text-black hover:bg-customYellow px-2 py-1 rounded"
-              >
-                THE BOXXET
-              </a> */}
             </div>
             <div className="flex gap-4 items-center">
               <Link to={"/"}>{Button.LetterNavBarButton("#",language,"home")}</Link>
-              <button onClick ={() => ScrollToSection(about)}>{Button.LetterNavBarButton("#", language, "about")}</button>
+              <Link to={"/"}>{Button.LetterNavBarButton("#", language, "about")}</Link>
               <button >
                 <div className="relative">
-                    <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
+                  <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
                     {Button.LetterNavBarButton("#",language,"service")}
-                      <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
-                    </div>
-                    {serviceDropdownOpen && <ServiceDropDown/>}
+                    <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
                   </div>
+                    {serviceDropdownOpen && <ServiceDropDown/>}
+                </div>
+              </button>
+              <Link to={"/gallery-page"}><button onClick={()=> ScrollToSection(gallery)}>{Button.LetterNavBarButton("#",language,"gallery")}</button></Link>
+              <Link to={"/contract"}><button onClick={()=> ScrollToSection(contactUs)}>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
+              <span>|</span>
+              <div className="relative">
+                <div
+                  className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded"
+                  onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
+                >
+                  <img src={transalateIcon} alt="Translate Icon" className="w-6" />
+                  <span>{language}</span>
+                  <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
+                </div>
+                {languageDropdownOpen && <LanguageDropdown setLanguage={setLanguage} setLanguageDropdownOpen={setLanguageDropdownOpen} />}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }else{
+    return (
+      <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white">
+        <div className="mx-auto flex justify-between items-center">
+          <div className="container mx-auto flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <a href="/">
+                <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
+              </a>
+            </div>
+            <div className="flex gap-4 items-center">
+              <Link to={"/"}>{Button.LetterNavBarButton("#",language,"home")}</Link>
+              <Link to={"/about-us"}>{Button.LetterNavBarButton("#", language, "about")}</Link>
+              <button >
+                <div className="relative">
+                  <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
+                    {Button.LetterNavBarButton("#",language,"service")}
+                    <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
+                  </div>
+                    {serviceDropdownOpen && <ServiceDropDown/>}
+                </div>
               </button>
               <Link to={"/gallery-page"}><button onClick={()=> ScrollToSection(gallery)}>{Button.LetterNavBarButton("#",language,"gallery")}</button></Link>
               <Link to={"/contract"}><button onClick={()=> ScrollToSection(contactUs)}>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>

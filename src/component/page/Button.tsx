@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Constants, Translations } from "../constants/Constants"; // import Constants จากไฟล์ Constants.tsx
 // import { Link } from 'react-router-dom';
 
@@ -7,9 +8,9 @@ class Button {
     const translations: { [key: string]: Translations } = Constants.translations;
     const label = translations[language][key];
     return (
-      <a href={locations} className="hover:text-black hover:bg-customYellow px-3 py-2 rounded">
+      <div onClick={() => locations} className="hover:text-black hover:bg-customYellow px-3 py-2 rounded">
         {label}
-      </a>
+      </div>
     );
   }
 
@@ -19,34 +20,31 @@ class Button {
     size: string,
     link: string,
   ): React.ReactNode {
+    const navigate = useNavigate();
+  
     const handleClick = (e: React.MouseEvent) => {
-      e.preventDefault(); // ป้องกันไม่ให้เกิดการนำทาง
+      if (link !== "#" && link !== null) {
+        navigate(link); // นำทางไปยังลิงก์ที่ระบุ
+      } else {
+        e.preventDefault(); // ป้องกันการนำทางถ้า link เป็น "#" หรือ null
+      }
     };
-
+  
     if (Icon === null) {
       return (
-        <a href={link} onClick={handleClick} className="flex px-4 py-2 hover:text-black hover:bg-customYellow cursor-pointer text-left">
+        <div onClick={handleClick} className="flex px-4 py-2 hover:text-black hover:bg-customYellow cursor-pointer text-left">
           <h1>{description}</h1>
-        </a>
+        </div>
       );
     } else {
       return (
-        <a href={link} onClick={handleClick} className="flex justify-between px-4 py-2 hover:text-black hover:bg-customYellow cursor-pointer text-left">
+        <div onClick={handleClick} className="flex justify-between px-4 py-2 hover:text-black hover:bg-customYellow cursor-pointer text-left">
           <p>{description}</p>
           <Icon size={size} />
-        </a>
+        </div>
       );
     }
   }
-  
-  // public static ContractButton(language:string){
-  //   const translations: {[key:string]:Translations} = Constants.translations
-  //   return (
-  //     <button className="bg-customBlue text-customYellow py-2 px-4 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all">
-  //       {translations[language].contactUs}
-  //     </button>
-  //   );
-  // };
 
 }
 

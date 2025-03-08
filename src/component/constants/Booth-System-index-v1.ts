@@ -51,6 +51,7 @@ export const BoothData = [
     {
         id: "1",
         titleMain: "Booth System",
+        link: "/booth-system",
         data: [
                 {
                     title: "R8 Booth",
@@ -114,6 +115,7 @@ export const BoothData = [
     {
         id: "2",
         titleMain: "Booth Set",
+        link: "/booth-set",
         data: [
             {
                 title: "Booth Set 1",
@@ -153,6 +155,7 @@ export const BoothData = [
     {
         id:"3",
         titleMain: "Element Design",
+        link: "/element-design",
         data:[
             {
             title: "Art Display Panel",
@@ -193,6 +196,7 @@ export const BoothData = [
     {
         id:"4",
         titleMain: "Event Rental",
+        link: "/event-rental",
         data:[
             {
             title: "Event Rental",
@@ -213,6 +217,7 @@ export const BoothData = [
     {
         id:"5",
         titleMain: "Activity",
+        link: "/activity",
         data:[
             {
             title: "Photobooth",
