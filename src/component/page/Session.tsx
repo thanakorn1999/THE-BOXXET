@@ -33,7 +33,6 @@ import {GalleryImg} from "../../component/constants/gallery-index.ts"
 import { FaLine } from "react-icons/fa6";
 
 
-
 interface SessionProps {
   id: string;
   language: string;
@@ -43,14 +42,13 @@ interface SessionProps {
 
 export const Session: React.FC<SessionProps> = ({ id, language, pic, landing }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
-
   return (
     <section
   id={id}
-  className="px-5 sm:px-10 md:px-20 lg:px-32 xl:px-40 flex flex-col justify-center max-w-[320px] min-h-[521px] sm:max-w-[744px] sm:min-h-[453px] lg:max-w-[1440px] lg:min-h-[537px] lg:mt-8">
+  className="px-5 sm:px-10 md:px-20 lg:px-32 xl:px-40 flex flex-col justify-center max-w-[320px] min-h-[521px] sm:max-w-[744px] sm:min-h-[453px] lg:max-w-[1440px] lg:min-h-[550px] lg:mt-8">
       {/* Header ABOUT */}
       <div className="text-center sm:text-left">
-        <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-4xl leading-tight tracking-wide">
+        <h1 className="absolute font-bold text-2xl sm:text-3xl md:text-4xl lg:text-4xl leading-tight tracking-wide border-b-4 border-black">
           {translations[language].about}
         </h1>
       </div>
@@ -65,9 +63,9 @@ export const Session: React.FC<SessionProps> = ({ id, language, pic, landing }) 
           <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-10">
             {translations[language].contractUsdescription}
           </p>
-          <button className="bg-customBlue text-customYellow py-2 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-lg">
+          <a href="/contact" className="text-center bg-customBlue text-customYellow py-2 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-lg">
             {translations[language].contactUs}
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -84,7 +82,7 @@ export const OurProject: React.FC<OurProjectProps> = ({ id, language, pic }) => 
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <section id={id} className="relative w-full h-[50vh]">
+    <section id={id} className="relative lg:w-[1440px] lg:h-[337px] md:w-[744px] md:h-[337px] sm:w-[320px] sm:h-[179px]">
       <div>
         <img src={pic} alt="Styled" 
           className="absolute w-full h-full object-cover filter brightness-50 contrast-150" />
@@ -92,15 +90,15 @@ export const OurProject: React.FC<OurProjectProps> = ({ id, language, pic }) => 
 
         {/* content */}
         <div className="relative z-10 flex flex-col justify-center items-center text-center top-[85px]">
-          <h1 className="text-5xl font-bold sm:text-5xl md:text-5xl text-customYellow">
+          <h1 className="lg:text-5xl font-bold md:text-5xl sm:text-2xl text-customYellow">
             {translations[language].ourProject}
           </h1>
-          <p className="text-xl text-white mt-4">
+          <p className="text-xl text-white lg:text-xl md:text-[16px] sm:text-[10px] mt-4">
             {translations[language].ourProjectDesp}
           </p>
-          <button className="bg-customYellow text-customBlue py-2 px-4 rounded-lg hover:bg-customBlue hover:text-customYellow transition-all mt-4">
+          <a href="/gallery-page" className="bg-customYellow text-customBlue py-2 px-4 rounded-lg hover:bg-customBlue hover:text-customYellow transition-all mt-4">
             {translations[language].gallery}
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -187,27 +185,29 @@ export const ServiceSection: React.FC<ServiceProps> = ({ id, language, img }) =>
             >
               {ServiceData.map((item) => (
                 <SwiperSlide key={item.title}>
-                  <div className="flex flex-col gap-6 mb-20 group relative shadow-lg rounded-xl px-6 py-8 h-[250px] w-[215px] lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${item.backgroundImage})` }}
-                    />
-                    <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
-                      <div className="relative flex gap-3">
-                      <div className="absolute left-1/2 top-80 transform -translate-x-1/2 -translate-y-1/2 w-full text-center transition-all duration-500 group-hover:top-10">
-                        <h1 className="text-xl lg:text-2xl font-bold text-customYellow">{item.title}</h1>
-                      </div>
-                      {item.bullets && item.bullets.length > 0 && (
-                        <div className="absolute left-1/2 top-[110%] transform -translate-x-1/2 w-[80%] text-left opacity-0 transition-all duration-500 group-hover:top-20 group-hover:opacity-100 ">
-                          <ul className="relative list-disc list-inside text-white text-sm lg:text-lg space-y-1">
-                            {item.bullets.map((bullet, index) => (
-                              <li key={index}>{bullet}</li>
-                            ))}
-                          </ul>
+                  <a href={item.link}>
+                    <div className="flex flex-col gap-6 mb-20 group relative shadow-lg rounded-xl px-6 py-8 h-[250px] w-[215px] lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${item.backgroundImage})` }}
+                      />
+                      <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
+                        <div className="relative flex gap-3">
+                        <div className="absolute left-1/2 top-80 transform -translate-x-1/2 -translate-y-1/2 w-full text-center transition-all duration-500 group-hover:top-10">
+                          <h1 className="text-xl lg:text-2xl font-bold text-customYellow">{item.title}</h1>
                         </div>
-                      )}
+                        {item.bullets && item.bullets.length > 0 && (
+                          <div className="absolute left-1/2 top-[110%] transform -translate-x-1/2 w-[80%] text-left opacity-0 transition-all duration-500 group-hover:top-20 group-hover:opacity-100 ">
+                            <ul className="relative list-disc list-inside text-white text-sm lg:text-lg space-y-1">
+                              {item.bullets.map((bullet, index) => (
+                                <li key={index}>{bullet}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -448,27 +448,35 @@ export const AboutSectionDescription: React.FC<AboutUsDescProps> = ({id,language
   const langKey = language.toUpperCase();
   const translations: { [key: string]: Translations } = Constants.translations;
   return(
-    <section id={id} className="lg:w-[1440px] lg:h-[606px] sm:w-[320px] flex justify-center items-center">
-      <div className="flex lg:w-[1127px] lg:h-[542px] sm: gap-6 ">
-        <div className="text-black w-80 h-56 sm:h-[537px] sm:w-[288px] lg:h-[542px]">
-          <h1 className="lg:text-xl md:text-xl sm:text-xs">'ITSMA (อิษมา)'</h1>
-          <div className="sm:h-[242px] lg:h-[542px]">
-            <p className="mt-6 indent-6 text-pretty sm:text-xs md:text-xl lg:text-xl">{translations[language].aboutPage2Description1}</p>
-            <img src={aboutUsbuttom} alt="#" className="mt-6" />
+    <section id={id} className="lg:w-[1440px] lg:h-[606px] md:w-[714px] md:h-[444px] sm:w-[320px] flex justify-center items-center">
+      <div className="flex lg:w-[1127px] lg:h-[542px] sm:w-[288px] sm:h-[1447px] gap-6 ">
+        <div className="text-black sm:h-[537px] sm:w-[288px] lg:w-[360px] lg:h-[542px]">
+          <div className="lg:w-[360px] lg:h-[29px]"><h1 className="lg:text-2xl md:text-xl sm:text-xs">'ITSMA (อิษมา)'</h1></div>
+          <div className="lg:w-[360px] lg:h-[242px] md:w-[531px] md:h-[95px] ">
+            <p className="mt-6 indent-6 text-pretty sm:text-xs md:text-xl lg:text-[14px] ">{translations[language].aboutPage2Description1}</p>
           </div>
-        </div>
-        <div className="w-[522px] lg:h-[542px]">
+            <div className="lg:w-[360px] lg:h-[223px] sm:w-[288px] sm:h-[192px] mt-6">
+              <img src={aboutUsbuttom} alt="#" className="w-full h-full" />
+            </div>
+          </div>
+        <div className="w-[522px] lg:h-[550px] mr-6">
           <h1 className="text-5xl sm:text-xl text-customBlue font-bold">THE BOXXET</h1>
           <h1 className="text-xs sm:text-[10px] text-black">(บริษัท เดอะ บ๊อกซ์เซ็ต จำกัด)</h1>
           <h1 className="text-xl text-black">DESIGN FOR YOUR FUTURE</h1>
-          <div className="text-black flex flex-col gap-6 mt-6 text-pretty indent-6">
-            <p dangerouslySetInnerHTML={{ __html: translations[language].aboutPage2Description2 }} />
-            <p >{translations[language].aboutPage2Description3}</p>
-            <p >{translations[langKey].aboutPage2Description4}</p>
+          <div className="text-black flex flex-col text-wrap indent-6 lg:w-[552px] lg:h-[538px]">
+            <div className="lg:w-[552px] lg:h-[120px] md:w-[531px] md:h-[95px] sm:w-[288px] sm:h-[84px] mt-6">
+              <p dangerouslySetInnerHTML={{ __html: translations[language].aboutPage2Description2 }} />
+            </div>
+            <div className="lg:w-[552px] lg:h-[120px] md:w-[531px] md:h-[95px] sm:w-[288px] sm:h-[84px] mt-6">
+              <p >{translations[language].aboutPage2Description3}</p>
+            </div>
+            <div className="lg:w-[552px] lg:h-[120px] md:w-[531px] md:h-[95px] sm:w-[288px] sm:h-[84px] mt-16">
+              <p >{translations[langKey].aboutPage2Description4}</p>
+            </div>
           </div>
         </div>
-        <div>
-          <img src={aboutUsbuttomright} alt="styled"  className="w-[167px] h-[566px]"/>
+        <div className="lg:w-[167px] lg:h-[542px]">
+          <img src={aboutUsbuttomright} alt="styled"  className="w-full h-full"/>
         </div>
       </div>
     </section>

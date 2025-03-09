@@ -29,7 +29,7 @@ export class Constants {
           about: "About",
           service: "Our Service",
           gallery: "Gallery",
-          contactUs: "Contract",
+          contactUs: "Contact",
           contractUsMainTitle: "THE BOXXET (บริษัท เดอะ บ๊อกซ์เซ็ต จำกัด)",
           contractUsSubTitle: "DESIGN FOR YOUR FUTURE",
           contractUsdescription: "Established in 1993 as “Itsma”, we bring over 32 years of expertise in exhibition board rentals, trade shows, and comprehensive marketing research services. Our focus has always been on understanding and exceeding customer expectations, ensuring seamless execution and maximum impact for every project. Trusted by numerous organizations, we continually innovate to deliver exceptional value and build enduring relationships with our clients.",

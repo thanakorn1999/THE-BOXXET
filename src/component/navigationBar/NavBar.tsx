@@ -42,7 +42,7 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
                   </div>
               </button>
               <Link to={"/gallery-page"}><button>{Button.LetterNavBarButton("#",language,"gallery")}</button></Link>
-              <Link to={"/contract"}><button onClick={()=> ScrollToSection(contactUs)}>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
+              <Link to={"/contact"}><button onClick={()=> ScrollToSection(contactUs)}>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
               <span>|</span>
               <div className="relative">
                 <div
@@ -74,7 +74,7 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
             </div>
             <div className="flex gap-4 items-center">
               <Link to={"/"}>{Button.LetterNavBarButton("#",language,"home")}</Link>
-              <Link to={"/"}>{Button.LetterNavBarButton("#", language, "about")}</Link>
+              <Link to={"/about-us"}>{Button.LetterNavBarButton("#", language, "about")}</Link>
               <button >
                 <div className="relative">
                   <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
@@ -85,7 +85,7 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
                 </div>
               </button>
               <Link to={"/gallery-page"}><button onClick={()=> ScrollToSection(gallery)}>{Button.LetterNavBarButton("#",language,"gallery")}</button></Link>
-              <Link to={"/contract"}><button onClick={()=> ScrollToSection(contactUs)}>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
+              <Link to={"/contact"}><button onClick={()=> ScrollToSection(contactUs)}>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
               <span>|</span>
               <div className="relative">
                 <div
@@ -126,7 +126,7 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
                 </div>
               </button>
               <Link to={"/gallery-page"}><button onClick={()=> ScrollToSection(gallery)}>{Button.LetterNavBarButton("#",language,"gallery")}</button></Link>
-              <Link to={"/contract"}><button onClick={()=> ScrollToSection(contactUs)}>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
+              <Link to={"/contact"}><button onClick={()=> ScrollToSection(contactUs)}>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
               <span>|</span>
               <div className="relative">
                 <div
