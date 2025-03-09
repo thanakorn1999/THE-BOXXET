@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 useState
 import NavBar from "../navigationBar/NavBar";
-import { OurProject, FooterSection, ContractComponent, CustomerSection } from "./Session";
+import { OurProject, FooterSection, ContractComponent, CustomerSection, ContactSection } from "./Session";
+import ContractImg from "../../assets/page/contact-img.png"
 import ourProject from "../../assets/page/our-project.png"
 
 const Contract:React.FC =() => {
@@ -17,6 +18,7 @@ const Contract:React.FC =() => {
         setLanguage={setLanguage}
         page='gallery'
       /> 
+      <ContactSection id='conact-section-1' language={language} img = {ContractImg}/>
       <ContractComponent id='contract-section' language={language}/>
       <CustomerSection id='customer-section' language={language}/>
       <OurProject id="ourProject-boots-section" language={language} pic={ourProject} />

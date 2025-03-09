@@ -373,8 +373,8 @@ export const AboutSection1: React.FC<AboutUsProps> = ({id, language, img}) => {
   return (
     <div>
       <section id={id}>
-        <div className="relative w-full h-[172px] sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
-          <h1 className="absolute font-bold  lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+        <div className="relative sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full 2xl:max-w-full sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
+          <h1 className="absolute font-bold lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
             {translations[language].aboutImpl}
           </h1>
         </div>
@@ -388,8 +388,8 @@ export const GallerySection: React.FC<AboutUsProps> = ({id, language, img}) => {
   return (
     <div>
        <section id={id}>
-         <div className="relative w-full h-[172px] sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
-           <h1 className="absolute font-bold  lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+         <div className="relative sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full 2xl:max-w-full sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
+           <h1 className="absolute font-bold lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
              {translations[language].gallery}
            </h1>
          </div>
@@ -403,9 +403,24 @@ export const OurServiceSection: React.FC<AboutUsProps> = ({id, language, img}) =
   return (
     <div>
        <section id={id}>
-        <div className="relative w-full h-[172px] sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
-          <h1 className="absolute font-bold  lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+        <div className="relative sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full 2xl:max-w-full sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
+          <h1 className="absolute font-bold lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
             {translations[language].ourProject}
+          </h1>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export const ContactSection: React.FC<AboutUsProps> = ({id, language, img}) => {
+  const translations: { [key: string]: Translations } = Constants.translations;
+  return (
+    <div>
+       <section id={id}>
+        <div className="relative sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full 2xl:max-w-full sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
+          <h1 className="absolute font-bold  lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+            {translations[language].contactUs}
           </h1>
         </div>
       </section>
