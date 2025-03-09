@@ -9,11 +9,14 @@ import RentalEvent from "./component/page/Rental-Event"
 import ActivityEvent from "./component/page/Activity-Event"
 import ContractPage from "./component/page/Contract"
 import Gallery from "./component/page/GalleryPage"
+import { ScrollToTop } from './component/utils/ComponentsUtil';
+
 
 const App: React.FC = () => {
 
   return (
     <Router>
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />

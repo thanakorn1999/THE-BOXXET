@@ -31,6 +31,7 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import {GalleryImg} from "../../component/constants/gallery-index.ts"
 import { FaLine } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
 interface SessionProps {
@@ -63,9 +64,9 @@ export const Session: React.FC<SessionProps> = ({ id, language, pic, landing }) 
           <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-10">
             {translations[language].contractUsdescription}
           </p>
-          <a href="/contact" className="text-center bg-customBlue text-customYellow py-2 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-lg">
+          <Link  to="/contact" className="text-center bg-customBlue text-customYellow py-2 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-lg">
             {translations[language].contactUs}
-          </a>
+          </Link>
         </div>
       </div>
     </section>
@@ -82,28 +83,29 @@ export const OurProject: React.FC<OurProjectProps> = ({ id, language, pic }) => 
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <section id={id} className="relative lg:w-[1440px] lg:h-[337px] md:w-[744px] md:h-[337px] sm:w-[320px] sm:h-[179px]">
-      <div>
-        <img src={pic} alt="Styled" 
+    <section id={id} className="relative lg:w-full lg:h-[337px] md:w-full md:h-[337px] sm:w-full sm:h-auto">
+      <div className="relative w-full h-full flex justify-center items-center">
+        <img src={pic} alt="Styled"
           className="absolute w-full h-full object-cover filter brightness-50 contrast-150" />
         <div className="absolute w-full h-full bg-[#09283C99] opacity-50"></div>
 
         {/* content */}
-        <div className="relative z-10 flex flex-col justify-center items-center text-center top-[85px]">
-          <h1 className="lg:text-5xl font-bold md:text-5xl sm:text-2xl text-customYellow">
+        <div className="relative z-10 flex flex-col justify-center items-center text-center lg:w-[1080px] lg:h-[168px] md:w-[558px] md:h-[185px] sm:w-[320px] sm:h-[129px]">
+          <h1 className="lg:text-5xl font-bold md:text-4xl sm:text-xl text-customYellow">
             {translations[language].ourProject}
           </h1>
-          <p className="text-xl text-white lg:text-xl md:text-[16px] sm:text-[10px] mt-4">
+          <p className="text-white lg:text-xl md:text-[10px] sm:text-xs mt-4">
             {translations[language].ourProjectDesp}
           </p>
-          <a href="/gallery-page" className="bg-customYellow text-customBlue py-2 px-4 rounded-lg hover:bg-customBlue hover:text-customYellow transition-all mt-4">
+          <Link to="/gallery-page" className="bg-customYellow text-customBlue py-2 px-4 rounded-lg hover:bg-customBlue hover:text-customYellow transition-all mt-4">
             {translations[language].gallery}
-          </a>
+          </Link>
         </div>
       </div>
     </section>
   );
 };
+
 
 interface CustomerProps {
   id: string;
@@ -115,15 +117,15 @@ export const CustomerSection: React.FC<CustomerProps> = ({ id, language }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <section id={id} className="w-full h-[50vh] flex justify-center items-center">
-      <div className="text-center">
-        <h1 className="text-5xl">{translations[language].customers}</h1>
-        <div className="flex justify-center items-center mt-6 gap-[119.5px] flex-wrap">
-          <img src={ipsos} alt="Ipsos" className="w-[30px] md:w-[60px] lg:w-[130px] h-auto" />
-          <img src={niq} alt="NIQ" className="w-[30px] md:w-[60px] lg:w-[130px] h-auto" />
-          <img src={central} alt="Central" className="w-[30px] md:w-[60px] lg:w-[130px] h-auto" />
-          <img src={theMall} alt="The Mall" className="w-[30px] md:w-[60px] lg:w-[130px] h-auto" />
-          <img src={customeAsia} alt="Custom Asia" className="w-[30px] md:w-[60px] lg:w-[130px] h-auto" />
+    <section id={id} className="lg:w-[1440px] lg:h-[256px] md:h-[500px]  md:w-[744px] sm:w-[288px] sm:h-[256px] flex justify-center items-center mt-8">
+      <div className="text-center md:mb-20">
+        <h1 className=" lg:text-[32px] md:text-2xl sm:text-2xl">{translations[language].customers}</h1>
+        <div className="flex justify-center items-center mt-6 gap-[119.5px] flex-wrap lg:w-[1128px] lg:h-[130px] md:w-[590px] md:[284px] sm:w-[272px] sm:h-[184px]">
+          <img src={ipsos} alt="Ipsos" className="lg:w-[130px] lg:h-[130px] md:w-[100px] md:h-[100px] sm:w-[60px] sm:h-[60px] " />
+          <img src={niq} alt="NIQ" className="lg:w-[130px] lg:h-[130px] md:w-[100px] md:h-[100px] sm:w-[60px] sm:h-[60px] " />
+          <img src={central} alt="Central" className="lg:w-[130px] lg:h-[130px] md:w-[100px] md:h-[100px] sm:w-[60px] sm:h-[60px] " />
+          <img src={theMall} alt="The Mall" className="lg:w-[130px] lg:h-[130px] md:w-[100px] md:h-[100px] sm:w-[60px] sm:h-[60px] " />
+          <img src={customeAsia} alt="Custom Asia" className="lg:w-[130px] lg:h-[130px] md:w-[100px] md:h-[100px] sm:w-[60px] sm:h-[60px] " />
         </div>
       </div>
     </section>
@@ -185,7 +187,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({ id, language, img }) =>
             >
               {ServiceData.map((item) => (
                 <SwiperSlide key={item.title}>
-                  <a href={item.link}>
+                  <Link to={item.link}>
                     <div className="flex flex-col gap-6 mb-20 group relative shadow-lg rounded-xl px-6 py-8 h-[250px] w-[215px] lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer">
                       <div
                         className="absolute inset-0 bg-cover bg-center"
@@ -207,7 +209,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({ id, language, img }) =>
                         )}
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -258,27 +260,29 @@ export const ServiceSection: React.FC<ServiceProps> = ({ id, language, img }) =>
             >
               {ServiceData.map((item) => (
                 <SwiperSlide key={item.title}>
-                  <div className="flex flex-col gap-6 mb-20 group relative shadow-lg rounded-xl px-6 py-8 h-[250px] w-[215px] lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${item.backgroundImage})` }}
-                    />
-                    <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
-                      <div className="relative flex gap-3">
-                      <div className="absolute left-1/2 top-80 transform -translate-x-1/2 -translate-y-1/2 w-full text-center transition-all duration-500 group-hover:top-10">
-                        <h1 className="text-xl lg:text-2xl font-bold text-customYellow">{item.title}</h1>
-                      </div>
-                      {item.bullets && item.bullets.length > 0 && (
-                        <div className="absolute left-1/2 top-[110%] transform -translate-x-1/2 w-[80%] text-left opacity-0 transition-all duration-500 group-hover:top-20 group-hover:opacity-100 ">
-                          <ul className="relative list-disc list-inside text-white text-sm lg:text-lg space-y-1">
-                            {item.bullets.map((bullet, index) => (
-                              <li key={index}>{bullet}</li>
-                            ))}
-                          </ul>
+                  <Link to={item.link}>
+                    <div className="flex flex-col gap-6 mb-20 group relative shadow-lg rounded-xl px-6 py-8 h-[250px] w-[215px] lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${item.backgroundImage})` }}
+                      />
+                      <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
+                        <div className="relative flex gap-3">
+                        <div className="absolute left-1/2 top-80 transform -translate-x-1/2 -translate-y-1/2 w-full text-center transition-all duration-500 group-hover:top-10">
+                          <h1 className="text-xl lg:text-2xl font-bold text-customYellow">{item.title}</h1>
                         </div>
-                      )}
+                        {item.bullets && item.bullets.length > 0 && (
+                          <div className="absolute left-1/2 top-[110%] transform -translate-x-1/2 w-[80%] text-left opacity-0 transition-all duration-500 group-hover:top-20 group-hover:opacity-100 ">
+                            <ul className="relative list-disc list-inside text-white text-sm lg:text-lg space-y-1">
+                              {item.bullets.map((bullet, index) => (
+                                <li key={index}>{bullet}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -298,7 +302,7 @@ export const FooterSection:React.FC<CustomerProps> = ({ id, language }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <footer id={id} className="w-full h-[50vh] relative">
+    <footer id={id} className="lg:w-[1440px] lg:h-[313px] md:h-[557px] md:w-[744px] sm:h-[875px] ">
       {/* ภาพพื้นหลัง */}
       <img
         src={FooterImg}
@@ -369,9 +373,9 @@ export const AboutSection1: React.FC<AboutUsProps> = ({id, language, img}) => {
   return (
     <div>
       <section id={id}>
-        <div className="relative lg:w-[1440px] lg:h-[172px] sm:w-[320px] sm:h-[96px] gap-6" style={{ backgroundImage: `url(${img})` }}>
-          <h1 className="absolute font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-customeWhite border-b-4 border-customYellow ml-4 sm:ml-10 md:ml-16 lg:ml-[150px] mt-10 sm:mt-12 md:mt-14">
-            {translations[language].about}
+        <div className="relative w-full h-[172px] sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
+          <h1 className="absolute font-bold  lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+            {translations[language].aboutImpl}
           </h1>
         </div>
       </section>
@@ -384,8 +388,8 @@ export const GallerySection: React.FC<AboutUsProps> = ({id, language, img}) => {
   return (
     <div>
        <section id={id}>
-         <div className="relative md:h-[453px] sm:h-[521px] lg:w-[1440px] lg:h-[172px] " style={{ backgroundImage: `url(${img})` }}>
-           <h1 className="absolute font-bold text-4xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+         <div className="relative w-full h-[172px] sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
+           <h1 className="absolute font-bold  lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
              {translations[language].gallery}
            </h1>
          </div>
@@ -399,8 +403,8 @@ export const OurServiceSection: React.FC<AboutUsProps> = ({id, language, img}) =
   return (
     <div>
        <section id={id}>
-        <div className="relative md:h-[453px] sm:h-[521px] lg:w-[1440px] lg:h-[172px] " style={{ backgroundImage: `url(${img})` }}>
-          <h1 className="absolute font-bold text-4xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
+        <div className="relative w-full h-[172px] sm:h-[96px] md:h-[172px] lg:h-[172px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
+          <h1 className="absolute font-bold  lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
             {translations[language].ourProject}
           </h1>
         </div>
@@ -408,35 +412,6 @@ export const OurServiceSection: React.FC<AboutUsProps> = ({id, language, img}) =
     </div>
   )
 }
-
-// export const AboutSection: React.FC<AboutUsProps> = ({ id, language, sectionKey, img }) => {
-//   const translations: { [key: string]: Translations } = Constants.translations;
-//   if ("about" === sectionKey){
-//     return (
-//       <section id={id}>
-//         <div className="flex lg:w-[1127px] h-[542px] sm:h-auto lg:h-[453px] gap-6" style={{ backgroundImage: `url(${img})` }}>
-//           <h1 className="absolute font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-customeWhite border-b-4 border-customYellow ml-4 sm:ml-10 md:ml-16 lg:ml-[150px] mt-10 sm:mt-12 md:mt-14">
-//             {translations[language].about}
-//           </h1>
-//         </div>
-//       </section>
-//     );
-//   }else if("gallery" === sectionKey){
-//     return (
-//       <section id={id}>
-//         <div className="relative w-full h-44 md:h-[453px] sm:h-[521px] " style={{ backgroundImage: `url(${img})` }}>
-//           <h1 className="absolute font-bold text-4xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
-//             {translations[language].gallery}
-//           </h1>
-//         </div>
-//       </section>
-//     );
-//   }else if("Our Service" === sectionKey){
-//     return (
-      
-//     );
-//   }
-// };
 
 interface AboutUsDescProps {
   id: string;

@@ -19,6 +19,7 @@ export interface Translations {
     address: string;
     contractUsDescription: string;
     galleryDescription: string;
+    aboutImpl:string
   }
   
 
@@ -27,6 +28,7 @@ export class Constants {
         EN: {
           home: "Home",
           about: "About",
+          aboutImpl: "ABOUT",
           service: "Our Service",
           gallery: "Gallery",
           contactUs: "Contact",
@@ -49,6 +51,7 @@ export class Constants {
         TH: {
           home: "หน้าหลัก",
           about: "เกี่ยวกับเรา",
+          aboutImpl: "เกี่ยวกับเรา",
           service: "ผลงานของเรา",
           gallery: "บริการ",
           contactUs: "ติดต่อเรา",

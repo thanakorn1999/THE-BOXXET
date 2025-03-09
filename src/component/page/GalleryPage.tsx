@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 useState
 import NavBar from "../../component/navigationBar/NavBar";
 import {FooterSection, GallerySection,GalleryComponentPage  } from "./Session";
-import gallery from "../../assets/gallery/gallery-page-section.jpeg"
+import gallery from "../../assets/gallery/gallery-page-section.png"
 
 
 

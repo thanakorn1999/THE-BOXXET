@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate,useLocation } from "react-router-dom";
 import {BoothData} from "../constants/Booth-System-index-v1"
 
 
@@ -98,4 +99,13 @@ export const ServiceDropDown: React.FC = () => {
       ))}
     </div>
   );
+};
+
+export const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, [pathname]); 
+
+  return null; 
 };
