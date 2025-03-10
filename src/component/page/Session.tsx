@@ -600,9 +600,9 @@ const ButtomBlue: React.FC<ButtomBlueProps> = ({title}) =>{
 
 const ContractButtom: React.FC = () =>{
   return(
-    <button className="bg-yellow-400 text-black font-bold text-lg px-6 py-3 rounded-lg focus:outline-dashed hover:text-white">
+    <Link to={"/contact"} className="bg-yellow-400 text-black font-bold text-lg px-6 py-3 rounded-lg focus:outline-dashed hover:text-white">
       Contact
-    </button>
+    </Link>
   )
 }
 
