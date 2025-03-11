@@ -21,9 +21,9 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
   
   if("about-page" === page){
     return (
-      <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white lg:w-[1440px] lg:h-[90px] md:w-[744px] md:h-[84px]" >
+      <div className="flex justify-center w-full bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white" >
         <div className="flex justify-between items-center">
-          <div className="flex container justify-between items-center">
+          <div className="flex container justify-between items-center gap-96 ">
             <div className="flex items-center gap-2 ml-[142px]">
               <a href="/">
                 <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
@@ -64,7 +64,7 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
 
   if("gallery"=== page){
     return (
-      <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white lg:w-[1440px] lg:h-[90px] md:w-[744px] md:h-[84px]">
+      <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white w-full lg:h-[90px] md:w-[744px] md:h-[84px]">
         <div className="mx-auto flex justify-between items-center">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center gap-2">
@@ -105,7 +105,7 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
     );
   }else{
     return (
-      <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white lg:w-[1440px] lg:h-[90px] md:w-[744px] md:h-[84px]">
+      <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white w-full lg:h-[90px] md:h-[84px]">
         <div className="mx-auto flex justify-between items-center">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center gap-2">
