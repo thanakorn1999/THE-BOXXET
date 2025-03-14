@@ -45,29 +45,29 @@ export const Session: React.FC<SessionProps> = ({ id, language, pic, landing }) 
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <section id={id} className="px-[5vw] flex flex-col max-w-[90vw] min-h-[80vh] mx-auto" >
+    <section id={id} className="px-[7vw] py-[1vw] max-w-[90vw] lg:h-[70vh] md:h-[80vh] sm:h-[90vh]" >
       
       {/* Header ABOUT */}
       <div className="text-left w-full  mt-8 ">
-        <h1 className="font-bold sm:text-2xl md:text-3xl lg:text-4xl border-b-4 border-black inline-block px-4">
+        <h1 className="font-bold sm:text-2xl md:text-3xl lg:text-5xl border-b-4 border-black inline-block px-4">
           {translations[language].about}
         </h1>
       </div>
 
       {/* Layout: รูป + ข้อความ */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[5vw] justify-center items-center mt-12 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[4vw] justify-center items-center mt-12 w-full">
         
         {/* รูปภาพ */}
-        <div className="flex justify-center max-w-[450px]">
+        <div className="flex justify-center max-w-[500px]">
           <img src={pic} alt={landing} className="w-full h-auto object-cover rounded-xl shadow-lg" />
         </div>
 
         {/* ข้อความ */}
-        <div className="flex flex-col justify-center text-center md:text-left max-w-[600px]">
-          <h1 className="text-[clamp(1.25rem, 3vw, 2rem)] font-bold">
+        <div className="flex flex-col justify-center text-center md:text-left max-w-[700px]">
+          <h1 className="sm:text-xs md:text-xl lg:text-3xl 2xl:text-4xl  font-bold">
             {translations[language].contractUsMainTitle}
           </h1>
-          <h2 className="text-[clamp(1rem, 2.5vw, 1.5rem)] mt-2">
+          <h2 className="sm:text-xs md:text-xl lg:text-2xl 2xl:text-3xl mt-2">
             {translations[language].contractUsSubTitle}
           </h2>
           <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-6 leading-relaxed">
@@ -94,7 +94,7 @@ export const OurProject: React.FC<OurProjectProps> = ({ id, language, pic }) => 
 
   return (
     <section id={id} className="w-full h-[50vh]">
-      <div className="relative w-full h-full flex justify-center items-center">
+      <div className="relative w-full h-full flex">
         {/* รูปพื้นหลัง */}
         <img
           src={pic}
@@ -161,89 +161,81 @@ export const ServiceSection: React.FC<ServiceProps> = ({ id, language, img }) =>
   const translations: { [key: string]: Translations } = Constants.translations;
   if (img){
     return (
-      <section id={id} className="relative max-w-full min-h-[100vh]">
+      <section id={id} className="relative min-h-[100vh] py-[1vw] max-w-[100vw] lg:h-[70vh] md:h-[80vh] sm:h-[90vh]">
         <div>
           <img src={img} alt="#" className="absolute w-full h-full object-cover filter brightness-50 contrast-150" />
           <div className="absolute w-full h-full bg-[#155C8A] opacity-50"></div>
-          <div className="flex items-center justify-center flex-col h-screen px-4 sm:px-8 md:px-16">
-            <div className="relative self-start w-full max-w-3xl mx-auto">
+          <div className="ml- flex text-left justify-center flex-col h-[100vh]">
+            <div className="relative w-full max-w-3xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-bold text-white border-b-4 border-yellow-500 inline-block px-4">{translations[language].serviceSection}</h1>
             </div>
             <div className="relative self-start w-full max-w-3xl mx-auto mt-6">
               <p className="text-customYellow text-lg md:text-xl">{translations[language].serviceSectionDesc}</p>
             </div>
-            <div className="relative flex justify-center items-center w-full mt-5 gap-4 flex-wrap px-4 md:px-8">
-              <button className="swiper-button-prev-custom text-customYellow hover:text-blue-400 ml-4 md:ml-4">
-                <ExpandCircleDownOutlinedIcon fontSize="large" className="rotate-90"/>
+            <div className="relative flex items-center w-full mt-5 px-4 md:px-8">
+              {/* ปุ่ม Prev */}
+              <button className="swiper-button-prev-custom text-customYellow hover:text-blue-400">
+                <ExpandCircleDownOutlinedIcon fontSize="large" className="rotate-90" />
               </button>
-              <Swiper
-                breakpoints={{
-                  0: {
-                    slidesPerView: 1,
-                    slidesPerGroup: 1,
-                    spaceBetween: 14,
-                  },
-                  340: {
-                    slidesPerView: 1,
-                    slidesPerGroup: 1,
-                    spaceBetween: 15,
-                  },
-                  700: {
-                    slidesPerView: 2,
-                    slidesPerGroup: 2,
-                    spaceBetween: 40,
-                  },
-                  1024: {
-                    slidesPerView: 3,
-                    slidesPerGroup: 3,
-                    spaceBetween: 40,
-                  },
-                }}
-                freeMode={true}
-                pagination={{ clickable: true }}
-                navigation={{
-                  prevEl: ".swiper-button-prev-custom",
-                  nextEl: ".swiper-button-next-custom",
-                }}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
-                modules={[Pagination, Navigation, FreeMode, Autoplay]}
-                className="w-full max-w-[90%] lg:max-w-[80%] h-[100%]"
-              >
-                {ServiceData.map((item) => (
-                  <SwiperSlide key={item.title}>
-                    <Link to={item.link}>
-                      <div className="flex flex-col gap-6 mb-10 group relative shadow-lg rounded-xl px-6 py-8 h-auto w-full lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer">
-                        <div
-                          className="absolute inset-0 bg-cover bg-center"
-                          style={{ backgroundImage: `url(${item.backgroundImage})` }}
-                        />
-                        <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
-                        <div className="relative flex gap-3">
-                          <div className="absolute left-1/2 top-80 transform -translate-x-1/2 -translate-y-1/2 w-full text-center transition-all duration-500 group-hover:top-10">
-                            <h1 className="text-xl lg:text-2xl font-bold text-customYellow">{item.title}</h1>
-                          </div>
-                          {item.bullets && item.bullets.length > 0 && (
-                            <div className="absolute left-1/2 top-[110%] transform -translate-x-1/2 w-[80%] text-left opacity-0 transition-all duration-500 group-hover:top-20 group-hover:opacity-100 ">
-                              <ul className="relative list-disc list-inside text-white text-sm lg:text-lg space-y-1">
-                                {item.bullets.map((bullet, index) => (
-                                  <li key={index}>{bullet}</li>
-                                ))}
-                              </ul>
+
+              {/* Swiper (Wrapper ครอบเพื่อให้ติดกับปุ่ม) */}
+              <div className="flex-grow max-w-screen-lg">
+                <Swiper
+                  breakpoints={{
+                    0: { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 0 },
+                    340: { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 0 },
+                    700: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 12 },
+                    1024: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 16 },
+                  }}
+                  freeMode={true}
+                  pagination={{ clickable: true }}
+                  navigation={{
+                    prevEl: ".swiper-button-prev-custom",
+                    nextEl: ".swiper-button-next-custom",
+                  }}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
+                  modules={[Pagination, Navigation, FreeMode, Autoplay]}
+                  className="max-w-full"
+                >
+                  {ServiceData.map((item) => (
+                    <SwiperSlide key={item.title}>
+                      <Link to={item.link}>
+                        <div className="flex flex-col gap-6 mb-8 group relative shadow-lg rounded-xl h-[250px] w-[215px] lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer">
+                          <div
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{ backgroundImage: `url(${item.backgroundImage})` }}
+                          />
+                          <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
+                          <div className="relative flex gap-3">
+                            <div className="absolute left-1/2 top-80 transform -translate-x-1/2 -translate-y-1/2 w-full text-center transition-all duration-500 group-hover:top-10">
+                              <h1 className="text-xl lg:text-2xl font-bold text-customYellow">{item.title}</h1>
                             </div>
-                          )}
+                            {item.bullets && item.bullets.length > 0 && (
+                              <div className="absolute left-1/2 top-[110%] transform -translate-x-1/2 w-[80%] text-left opacity-0 transition-all duration-500 group-hover:top-20 group-hover:opacity-100">
+                                <ul className="relative list-disc list-inside text-white text-sm lg:text-lg space-y-1">
+                                  {item.bullets.map((bullet, index) => (
+                                    <li key={index}>{bullet}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              <button className="swiper-button-next-custom text-customYellow hover:text-blue-400 mr-4 md:mr-8">
-                <ExpandCircleDownOutlinedIcon fontSize="large" className="-rotate-90"/>
+                      </Link>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+
+              {/* ปุ่ม Next */}
+              <button className="swiper-button-next-custom text-customYellow hover:text-blue-400">
+                <ExpandCircleDownOutlinedIcon fontSize="large" className="-rotate-90" />
               </button>
             </div>
+
           </div>
         </div>
       </section>
