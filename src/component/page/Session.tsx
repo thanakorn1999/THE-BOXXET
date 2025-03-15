@@ -646,7 +646,6 @@ const ContractButtom: React.FC = () =>{
 }
 
 export const ContractComponent:React.FC<AboutUsDescProps> =() =>{
-  const translations: { [key: string]: Translations } = Constants.translations;
 
   const [formData, setFormData] = useState({
     name: "",
