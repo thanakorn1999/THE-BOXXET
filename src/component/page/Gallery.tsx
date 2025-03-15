@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 useState
 import NavBar from "../../component/navigationBar/NavBar";
-import { OurProject, FooterSection, OurServiceSection, ServiceSection, CustomerSection  } from "./Session";
+import { OurProject, FooterSection, OurServiceSection, ServiceSection} from "./Session";
 import gallery from "../../assets/page/gallary-section.png"
 import ourProject from "../../assets/page/our-project.png"
 

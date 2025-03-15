@@ -492,7 +492,7 @@ export const AboutSectionDescription: React.FC<AboutUsDescProps> = ({ id, langua
         </div>
 
         {/* Middle Section */}
-        <div className="text-center md:text-left">
+        <div className="text-center md:text-left lg:justify-center">
           <h1 className="text-5xl sm:text-xl text-customBlue font-bold">THE BOXXET</h1>
           <h1 className="text-xs sm:text-[10px] text-black">(บริษัท เดอะ บ๊อกซ์เซ็ต จำกัด)</h1>
           <h1 className="text-xl text-black">DESIGN FOR YOUR FUTURE</h1>
@@ -645,7 +645,7 @@ const ContractButtom: React.FC = () =>{
   )
 }
 
-export const ContractComponent:React.FC<AboutUsDescProps> =({id,language}) =>{
+export const ContractComponent:React.FC<AboutUsDescProps> =() =>{
   const translations: { [key: string]: Translations } = Constants.translations;
 
   const [formData, setFormData] = useState({
@@ -673,99 +673,56 @@ export const ContractComponent:React.FC<AboutUsDescProps> =({id,language}) =>{
     window.location.href = mailtoLink
   };
 
-  return(
-    <section id={id} className="w-[1440px] h-[710px] flex justify-center items-center">
-      <div className="flex ">
-        <div className="flex flex-col w-[551px] h-[579px] justify-center items-center">
-          <div className="flex w-[163px] h-[170px] items-start">
-            <img src={TheBoxxetMailImg} alt="" className="h-full w-full" />
-          </div>
-          <div className="flex gap-1 mt-6 justify-start w-[503px] h-6">
-            <MailOutlineIcon />
-            <h1>theboxxet.contact@gmail.com</h1>
-          </div>
-          <div className="flex gap-1 mt-6 w-[503px] h-6">
-            <PhoneIcon />
-            <h1>095-956-5419, 064-265-9428</h1>
-          </div>
-          <div className="flex gap-1 mt-6 w-[503px] h-[66px]">
-            <LocationOnOutlinedIcon/>
-            <div className="flex flex-col">
-              <h1 className="font-bold">The Villa Ramindra</h1>
-              <h1>{translations[language].address}</h1>
-            </div>
-          </div>
-          <div className="flex gap-1 mt-6 w-[503px] h-[66px]">
-            <FacebookOutlinedIcon/>
-            <div className="flex flex-col">
-              <h1 className="font-bold">THE BOXXET</h1>
-              <a href="https://www.facebook.com/boxxet">https://www.facebook.com/boxxet</a>
-            </div>
-          </div>
-          <div className="flex gap-1 mt-6 w-[503px] h-[150px]">
-            <FaLine/>
-            <div className="flex flex-col">
-              <h1 className="font-bold">Line Official</h1>
-              <img src={LineIcon} alt="" />
-            </div>
+  return (
+    <section className="max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row gap-12">
+      <div className="flex flex-col items-center text-center md:text-left md:items-start space-y-6 w-full md:w-1/2">
+        <img src={TheBoxxetMailImg} alt="The Boxxet" className="w-32 h-32" />
+        <div className="flex items-center gap-2">
+          <MailOutlineIcon />
+          <p>theboxxet.contact@gmail.com</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <PhoneIcon />
+          <p>095-956-5419, 064-265-9428</p>
+        </div>
+        <div className="flex items-start gap-2">
+          <LocationOnOutlinedIcon />
+          <div>
+            <p className="font-bold">The Villa Ramindra</p>
+            <p>ที่อยู่ที่ต้องการแสดง</p>
           </div>
         </div>
-        <div className="w-[551px] h-[623px] mt-6 ml-6 mr-6 text-left">
+        <div className="flex items-start gap-2">
+          <FacebookOutlinedIcon />
           <div>
-            <h1 className="font-bold text-xl">{translations[language].contactUs}</h1>
+            <p className="font-bold">THE BOXXET</p>
+            <a href="https://www.facebook.com/boxxet" className="text-blue-500">facebook.com/boxxet</a>
           </div>
-          <div className="w-[503px] h-[66px] mt-4">
-            <h1 className="text-wrap">{translations[language].contractUsDescription}</h1>
-          </div>
-          <div className="w-[503px] h-[379px] mt-6 ">
-            <form className="space-y-4" onSubmit={sendEmail}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="phone"
-                placeholder="Contact number"
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                onChange={handleChange}
-              />
-              <input
-                type="email"
-                name="mail"
-                placeholder="Mail"
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                onChange={handleChange}
-              />
-              <textarea
-                name="description"
-                placeholder="Description"
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 h-32"
-                onChange={handleChange}
-              />
-              <button
-                type="submit"
-                className="w-full bg-yellow-400 text-black font-bold p-3 rounded-md hover:bg-yellow-500 transition"
-              >
-                Send
-              </button>
-            </form>
+        </div>
+        <div className="flex items-start gap-2">
+          <FaLine />
+          <div>
+            <p className="font-bold">Line Official</p>
+            <img src={LineIcon} alt="Line Official" className="w-24 h-24" />
           </div>
         </div>
       </div>
+      
+      <div className="w-full md:w-1/2">
+        <h1 className="text-2xl font-bold">ติดต่อเรา</h1>
+        <p className="mt-4">กรุณากรอกข้อมูลด้านล่างเพื่อติดต่อเรา</p>
+        <form className="mt-6 space-y-4" onSubmit={sendEmail}>
+          <input type="text" name="name" placeholder="ชื่อ" className="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400" onChange={handleChange} />
+          <input type="text" name="phone" placeholder="เบอร์ติดต่อ" className="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400" onChange={handleChange} />
+          <input type="email" name="mail" placeholder="อีเมล" className="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400" onChange={handleChange} />
+          <input type="text" name="subject" placeholder="หัวข้อ" className="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400" onChange={handleChange} />
+          <textarea name="description" placeholder="รายละเอียด" className="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-400 h-32" onChange={handleChange}></textarea>
+          <button type="submit" className="w-full bg-yellow-400 text-black font-bold p-3 rounded-md hover:bg-yellow-500 transition">ส่ง</button>
+        </form>
+      </div>
     </section>
   );
-}
+};
 
 interface GalleryProps {
   id: string;
@@ -783,35 +740,38 @@ export const GalleryComponentPage: React.FC<GalleryProps> = ({ id, language }) =
   const selectedImages = currentGallery ? currentGallery.images : [];
 
   return (
-      <div id={id} className="items-center justify-center w-[1440px] h-[1860px] mt-8">
-          <div className="flex flex-col items-center text-left">
-              <div className="flex flex-col self-start ml-40">
-                  <h1>{translations[language].galleryDescription}</h1>
-              </div>
-              <div className="w-[1130px] h-[1620px]">
-                  <GalleryImgSection images={selectedImages} />
-              </div>
+    <div id={id} className="container mx-auto h-auto mt-8 px-4">
+        <div className="flex flex-col items-center text-center">
+            {/* Title Section */}
+            <div className="self-start px-4 md:px-10">
+                <h1 className="text-lg md:text-xl font-semibold">{translations[language].galleryDescription}</h1>
+            </div>
 
-              {/* Pagination */}
-              <div className="flex justify-between w-[300px] mt-14">
-                  <button
-                      className={`px-4 py-2 bg-gray-200 rounded ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-300"}`}
-                      onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                      disabled={currentPage === 1}
-                  >
-                      Previous
-                  </button>
-                  <span>Page {currentPage} of {totalPages}</span>
-                  <button
-                      className={`px-4 py-2 bg-gray-200 rounded ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-300"}`}
-                      onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                      disabled={currentPage === totalPages}
-                  >
-                      Next
-                  </button>
-              </div>
-          </div>
-      </div>
+            {/* Gallery Images Section */}
+            <div className="w-full max-w-6xl mt-6">
+                <GalleryImgSection images={selectedImages} />
+            </div>
+
+            {/* Pagination */}
+            <div className="flex flex-wrap justify-between items-center w-full max-w-xs sm:max-w-sm mt-10 mb-8">
+                <button
+                    className={`px-4 py-2 bg-gray-200 rounded transition ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-300"}`}
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                >
+                    Previous
+                </button>
+                <span className="text-lg font-medium">Page {currentPage} of {totalPages}</span>
+                <button
+                    className={`px-4 py-2 bg-gray-200 rounded transition ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-300"}`}
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
   );
 };
 
@@ -821,21 +781,28 @@ interface GalleryImgSectionProps {
 
 const GalleryImgSection: React.FC<GalleryImgSectionProps> = ({ images }) => {
   return (
-      <div className="mt-6">
-          <div className="w-[1130px] h-[500px]">
-              <img src={images[0]} alt="" className="w-full h-full" />
+      <div className="mt-6 container mx-auto px-4">
+          {/* รูปหลักบนสุด */}
+          <div className="w-full max-w-6xl mx-auto">
+              <img src={images[0]} alt="" className="w-full h-full rounded-lg object-cover" />
           </div>
-          <div className="mt-6 flex gap-6 w-[1130px] h-[279px]">
+
+          {/* แถวที่ 1 (3 รูป) */}
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {images.slice(1, 4).map((img, index) => (
-                  <img key={index} src={img} alt="" className="w-full h-full" />
+                  <img key={index} src={img} alt="" className="w-full h-full rounded-lg object-cover" />
               ))}
           </div>
-          <div className="w-[1130px] h-[500px] mt-6">
-              <img src={images[4]} alt="" className="w-full h-full" />
+
+          {/* รูปหลักกลาง */}
+          <div className="w-full max-w-6xl mx-auto mt-6">
+              <img src={images[4]} alt="" className="w-full h-fullrounded-lg object-cover" />
           </div>
-          <div className="mt-6 flex gap-6 w-[1130px] h-[279px]">
+
+          {/* แถวที่ 2 (3 รูป) */}
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {images.slice(5, 8).map((img, index) => (
-                  <img key={index} src={img} alt="" className="w-full h-full" />
+                  <img key={index} src={img} alt="" className="w-full h-full rounded-lg object-cover" />
               ))}
           </div>
       </div>

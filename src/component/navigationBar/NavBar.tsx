@@ -18,60 +18,62 @@ interface NavBar {
 const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,page}) => {
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   
   if("about-page" === page){
     return (
-      <div className="flex justify-center w-full bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white" >
-        <div className="flex justify-between items-center">
-          <div className="flex container justify-between items-center gap-96 ">
-            <div className="flex items-center gap-2 ml-[142px]">
-              <a href="/">
-                <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
-              </a>
-            </div>
-            <div className="flex gap-4 items-center">
-              <Link to={"/"}>{Button.LetterNavBarButton("#",language,"home")}</Link>
-              <button onClick ={() => ScrollToSection(about)}>{Button.LetterNavBarButton("#", language, "about")}</button>
-              <button >
-                <div className="relative">
-                    <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
-                    {Button.LetterNavBarButton("#",language,"service")}
-                      <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
-                    </div>
-                    {serviceDropdownOpen && <ServiceDropDown/>}
-                  </div>
-              </button>
-              <Link to={"/gallery-page"}><button>{Button.LetterNavBarButton("#",language,"gallery")}</button></Link>
-              <Link to={"/contact"}><button onClick={()=> ScrollToSection(contactUs)}>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
-              <span>|</span>
+      <nav className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white w-full">
+        <div className="container mx-auto flex justify-between items-center">
+          {/* Logo */}
+          <a href="/">
+            <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
+          </a>
+  
+          {/* Hamburger Menu Button (Mobile) */}
+          <button className="lg:hidden text-white" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? "✖" : "☰"}
+          </button>
+  
+          {/* Nav Links */}
+          <div className={`lg:flex ${menuOpen ? "block" : "hidden"} flex-col lg:flex-row gap-4 items-center w-full lg:w-auto mt-4 lg:mt-0`}>
+            <Link to="/">{Button.LetterNavBarButton("#", language, "home")}</Link>
+            <button onClick={() => ScrollToSection(about)}>{Button.LetterNavBarButton("#", language, "about")}</button>
+            <button onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
               <div className="relative">
-                <div
-                  className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded"
-                  onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                >
-                  <img src={transalateIcon} alt="Translate Icon" className="w-6" />
-                  <span>{language}</span>
+                <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded">
+                  {Button.LetterNavBarButton("#", language, "service")}
                   <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
                 </div>
-                {languageDropdownOpen && <LanguageDropdown setLanguage={setLanguage} setLanguageDropdownOpen={setLanguageDropdownOpen} />}
+                {serviceDropdownOpen && <ServiceDropDown />}
               </div>
+            </button>
+            <Link to="/gallery-page"><button>{Button.LetterNavBarButton("#", language, "gallery")}</button></Link>
+            <Link to="/contact"><button>{Button.LetterNavBarButton("#", language, "contactUs")}</button></Link>
+            <span className="hidden lg:block">|</span>
+            <div className="relative">
+              <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}>
+                <img src={transalateIcon} alt="Translate Icon" className="w-6" />
+                <span>{language}</span>
+                <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
+              </div>
+              {languageDropdownOpen && <LanguageDropdown setLanguage={setLanguage} setLanguageDropdownOpen={setLanguageDropdownOpen} />}
             </div>
           </div>
         </div>
-      </div>
+      </nav>
     );
-  }
+  };
 
   if("gallery"=== page){
     return (
-      <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white w-full lg:h-[90px] md:w-[744px] md:h-[84px]">
+      <div className="flex justify-center w-full bg-gradient-to-r from-[#09283C] to-[#155C8A] py-4 text-white">
         <div className="mx-auto flex justify-between items-center">
-          <div className="container mx-auto flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <a href="/">
-                <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
-              </a>
-            </div>
+          <div className="flex container justify-between items-center gap-96 ">
+              <div className="flex">
+                <a href="/">
+                  <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
+                </a>
+              </div>
             <div className="flex gap-4 items-center">
               <Link to={"/"}>{Button.LetterNavBarButton("#",language,"home")}</Link>
               <Link to={"/about-us"}>{Button.LetterNavBarButton("#", language, "about")}</Link>
@@ -107,12 +109,12 @@ const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,p
     return (
       <div className="bg-gradient-to-r from-[#09283C] to-[#155C8A] p-4 text-white w-full lg:h-[90px] md:h-[84px]">
         <div className="mx-auto flex justify-between items-center">
-          <div className="container mx-auto flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <a href="/">
-                <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
-              </a>
-            </div>
+          <div className="flex container justify-between items-center gap-96 ">
+              <div className="flex">
+                <a href="/">
+                  <img src={LogoIcon} alt="Logo" className="w-14 uppercase" />
+                </a>
+              </div>
             <div className="flex gap-4 items-center">
               <Link to={"/"}>{Button.LetterNavBarButton("#",language,"home")}</Link>
               <Link to={"/about-us"}>{Button.LetterNavBarButton("#", language, "about")}</Link>

@@ -8,7 +8,7 @@ class Button {
     const translations: { [key: string]: Translations } = Constants.translations;
     const label = translations[language][key];
     return (
-      <div onClick={() => locations} className="hover:text-black hover:bg-customYellow lg:text-30% md:text-xs sm:text-[8px] px-3 py-2 rounded">
+      <div onClick={() => locations} className="hover:text-black hover:bg-customYellow lg:text-[1rem] md:text-xs px-3 py-2 rounded">
         {label}
       </div>
     );
