@@ -6,10 +6,9 @@ import dropDownIcon from "../../assets/logo/Chevron down.png"
 import {Session,OurProject,CustomerSection,FooterSection,ServiceSection} from "./Session";
 import Button from "./Button";
 import AboutUsImage from "../../assets/page/about-us.png"
-import ourProject from "../../assets/page/our-project.png"
+import OurProjectImg from "../../assets/page/our-project.png"
 import { Link, useNavigate } from 'react-router-dom';
 import { ServiceDropDown, LanguageDropdown } from "../utils/ComponentsUtil";
-import FooterImg from "../../assets/page/footerimg.jpeg"
 
 
 const MainPage: React.FC =() => {
@@ -119,8 +118,8 @@ const MainPage: React.FC =() => {
           </div>
         </div>
         <Session id="about-section" language={language} pic={AboutUsImage} landing="#" />
-        <ServiceSection id="service-section" language={language} img={FooterImg}/>
-        <OurProject id="ourProject-section" language={language} pic={ourProject} />
+        <ServiceSection id="service-section" language={language} img={imageMainPage}/>
+        <OurProject id="ourProject-section" language={language} pic={OurProjectImg} />
         <CustomerSection id="customer-section" language={language}/>
         <FooterSection id="footer-section" language={language} />
       </div>

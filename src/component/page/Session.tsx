@@ -10,7 +10,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import LineIcon from "../../assets/page/lineIcon.png"
-import FooterImg from "../../assets/page/footerimg.jpeg"
+import FooterImg from "../../assets/page/footerimg.png"
 import {Swiper,SwiperSlide} from "swiper/react"
 import {FreeMode, Navigation, Pagination,Autoplay} from 'swiper/modules'
 import {ServiceData} from "../../component/constants/index.js"
@@ -25,7 +25,7 @@ import TheBoxxetMailImg from "../../assets/logo/the-boxxet-send-enmail-logo.jpeg
 
 // css
 import 'swiper/swiper-bundle.css';
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
@@ -45,36 +45,33 @@ export const Session: React.FC<SessionProps> = ({ id, language, pic, landing }) 
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <section id={id} className="px-[7vw] py-[1vw] max-w-[90vw] lg:h-[70vh] md:h-[80vh] sm:h-[90vh]" >
-      
+    <section id={id} className="px-[7vw] py-[1vw] max-w-[90vw] w-full">
       {/* Header ABOUT */}
-      <div className="text-left w-full  mt-8 ">
-        <h1 className="font-bold sm:text-2xl md:text-3xl lg:text-5xl border-b-4 border-black inline-block px-4">
+      <div className="text-left w-full mt-8">
+        <h1 className="font-bold border-b-4 border-black inline-block text-[clamp(2rem,5vw,3rem)]">
           {translations[language].about}
         </h1>
       </div>
 
-      {/* Layout: รูป + ข้อความ */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[4vw] justify-center items-center mt-12 w-full">
-        
+      {/* Layout Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 w-full items-center">
         {/* รูปภาพ */}
-        <div className="flex justify-center max-w-[500px]">
+        <div className="flex justify-center max-w-lg mx-auto">
           <img src={pic} alt={landing} className="w-full h-auto object-cover rounded-xl shadow-lg" />
         </div>
 
         {/* ข้อความ */}
-        <div className="flex flex-col justify-center text-center md:text-left max-w-[700px]">
-          <h1 className="sm:text-xs md:text-xl lg:text-3xl 2xl:text-4xl  font-bold">
+        <div className="flex flex-col justify-center text-center md:text-left max-w-xl mx-auto">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">
             {translations[language].contractUsMainTitle}
           </h1>
-          <h2 className="sm:text-xs md:text-xl lg:text-2xl 2xl:text-3xl mt-2">
+          <h2 className="text-lg md:text-xl lg:text-2xl mt-2">
             {translations[language].contractUsSubTitle}
           </h2>
-          <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-6 leading-relaxed">
+          <p className="text-gray-600 mt-6 text-pretty whitespace-normal leading-relaxed">
             {translations[language].contractUsdescription}
           </p>
-
-          <Link to="/contact" className="text-center bg-customBlue text-customYellow py-3 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-[clamp(1rem, 2vw, 1.25rem)]">
+          <Link to="/contact" className="text-center bg-customBlue text-customYellow py-3 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-lg">
             {translations[language].contactUs}
           </Link>
         </div>
@@ -94,18 +91,13 @@ export const OurProject: React.FC<OurProjectProps> = ({ id, language, pic }) => 
 
   return (
     <section id={id} className="w-full h-[50vh]">
-      <div className="relative w-full h-full flex">
-        {/* รูปพื้นหลัง */}
-        <img
-          src={pic}
-          alt="Styled"
-          className="absolute inset-0 w-full h-full object-cover brightness-50 contrast-150"
-        />
-        <div className="absolute inset-0 bg-[#09283C99] opacity-50"></div>
-
+      <div 
+        className="w-full h-full grid place-items-center" 
+        style={{ backgroundImage: `url(${pic})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      >
         {/* เนื้อหา */}
-        <div className="relative z-10 flex flex-col items-center text-center w-full max-w-3xl px-6">
-          <h1 className="text-customYellow font-bold sm:text-2xl md:text-4xl lg:text-5xl">
+        <div className="z-10 flex flex-col items-center text-center w-full max-w-3xl px-6">
+          <h1 className="text-customYellow font-bold" style={{ fontSize: 'clamp(3rem, 5vw, 3rem)' }}>
             {translations[language].ourProject}
           </h1>
           <p className="text-white mt-4 text-base md:text-lg lg:text-xl">
@@ -124,8 +116,6 @@ export const OurProject: React.FC<OurProjectProps> = ({ id, language, pic }) => 
 };
 
 
-
-
 interface CustomerProps {
   id: string;
   language: string;
@@ -138,8 +128,8 @@ export const CustomerSection: React.FC<CustomerProps> = ({ id, language }) => {
   return (
     <section id={id} className="w-full h-[50vh] flex justify-center items-center mt-8 px-4">
       <div className="text-center w-full max-w-8xl">
-        <h1 className="lg:text-5xl md:text-4xl sm:text-3xl font-semibold">{translations[language].customers}</h1>
-        <div className="flex flex-wrap justify-center items-center mt-6 gap-12">
+        <h1 className="font-semibold" style={{ fontSize: 'clamp(3rem, 5vw, 3rem)' }}>{translations[language].customers}</h1>
+        <div className="flex flex-wrap justify-center items-center mt-6 gap-16">
           <img src={ipsos} alt="Ipsos" className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32" />
           <img src={niq} alt="NIQ" className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32" />
           <img src={central} alt="Central" className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32" />
@@ -159,39 +149,50 @@ interface ServiceProps {
 
 export const ServiceSection: React.FC<ServiceProps> = ({ id, language, img }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
+  const [hideNav, setHideNav] = useState(false);
+
+  useEffect(() => {
+    // ตรวจสอบจำนวน Slide
+    if (ServiceData.length <= 1) {
+      setHideNav(true);
+    } else {
+      setHideNav(false);
+    }
+  }, [ServiceData])
   if (img){
     return (
-      <section id={id} className="relative min-h-[100vh] py-[1vw] max-w-[100vw] lg:h-[70vh] md:h-[80vh] sm:h-[90vh]">
+      <div id={id} className="relative w-full h-[100vh]">
         <div>
-          <img src={img} alt="#" className="absolute w-full h-full object-cover filter brightness-50 contrast-150" />
-          <div className="absolute w-full h-full bg-[#155C8A] opacity-50"></div>
-          <div className="ml- flex text-left justify-center flex-col h-[100vh]">
-            <div className="relative w-full max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold text-white border-b-4 border-yellow-500 inline-block px-4">{translations[language].serviceSection}</h1>
+          <img src={img} alt="Styled" className="absolute w-full h-full object-cover filter brightness-50 contrast-150" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[#09283C] opacity-50"></div>
+          <div className="flex flex-col px-[7vw] py-[1vw]">
+            <div>
+              <h1 className="relative font-bold text-white border-b-4 border-yellow-500 inline-block px-4 mt-8" style={{ fontSize: 'clamp(3rem, 5vw, 3rem)' }}>{translations[language].serviceSection}</h1>
             </div>
-            <div className="relative self-start w-full max-w-3xl mx-auto mt-6">
-              <p className="text-customYellow text-lg md:text-xl">{translations[language].serviceSectionDesc}</p>
+            <div>
+              <p className="relative mt-6 text-customYellow text-lg md:text-xl">{translations[language].serviceSectionDesc}</p>
             </div>
-            <div className="relative flex items-center w-full mt-5 px-4 md:px-8">
-              {/* ปุ่ม Prev */}
-              <button className="swiper-button-prev-custom text-customYellow hover:text-blue-400">
-                <ExpandCircleDownOutlinedIcon fontSize="large" className="rotate-90" />
-              </button>
+            <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-between w-full mt-6">
+              {/* ปุ่ม Prev (ซ่อนเมื่อมี 1 Slide) */}
+              {!hideNav && (
+                <button className="swiper-button-prev-custom text-customYellow hover:text-blue-400 flex-shrink-0">
+                  <ExpandCircleDownOutlinedIcon fontSize="large" className="rotate-90" />
+                </button>
+              )}
 
-              {/* Swiper (Wrapper ครอบเพื่อให้ติดกับปุ่ม) */}
-              <div className="flex-grow max-w-screen-lg">
+              {/* Swiper */}
+              <div className="flex-grow max-w-screen-lg w-full">
                 <Swiper
                   breakpoints={{
                     0: { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 0 },
-                    340: { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 0 },
-                    700: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 12 },
+                    700: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 8 },
                     1024: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 16 },
                   }}
                   freeMode={true}
                   pagination={{ clickable: true }}
                   navigation={{
-                    prevEl: ".swiper-button-prev-custom",
-                    nextEl: ".swiper-button-next-custom",
+                    prevEl: hideNav ? null : ".swiper-button-prev-custom",
+                    nextEl: hideNav ? null : ".swiper-button-next-custom",
                   }}
                   autoplay={{
                     delay: 3000,
@@ -203,9 +204,9 @@ export const ServiceSection: React.FC<ServiceProps> = ({ id, language, img }) =>
                   {ServiceData.map((item) => (
                     <SwiperSlide key={item.title}>
                       <Link to={item.link}>
-                        <div className="flex flex-col gap-6 mb-8 group relative shadow-lg rounded-xl h-[250px] w-[215px] lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer">
+                        <div className="flex-col gap-6 mb-8 group shadow-lg rounded-xl h-[360px] w-[320px] min-h-70 min-w-72 overflow-hidden cursor-pointer">
                           <div
-                            className="absolute inset-0 bg-cover bg-center"
+                            className="absolute flex flex-col inset-0 bg-cover bg-center"
                             style={{ backgroundImage: `url(${item.backgroundImage})` }}
                           />
                           <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
@@ -230,68 +231,66 @@ export const ServiceSection: React.FC<ServiceProps> = ({ id, language, img }) =>
                 </Swiper>
               </div>
 
-              {/* ปุ่ม Next */}
-              <button className="swiper-button-next-custom text-customYellow hover:text-blue-400">
-                <ExpandCircleDownOutlinedIcon fontSize="large" className="-rotate-90" />
-              </button>
+              {/* ปุ่ม Next (ซ่อนเมื่อมี 1 Slide) */}
+              {!hideNav && (
+                <button className="swiper-button-next-custom text-customYellow hover:text-blue-400 flex-shrink-0">
+                  <ExpandCircleDownOutlinedIcon fontSize="large" className="-rotate-90" />
+                </button>
+              )}
             </div>
-
           </div>
         </div>
-      </section>
+      </div>
     );
-}else{
-    return (
-      <section id={id} className="relative">
-        <div className="w-full h-[595px] object-cover">
-          <div className="flex items-center justify-center flex-col h-screen">
-            <div className="relative flex justify-center items-center w-full mt-5 gap-4">
-              <button className="swiper-button-prev-custom text-black hover:text-customYellow ml-32">
-                <ArrowBackIosIcon fontSize="large" />
-              </button>
-              <Swiper
+}else
+return (
+  <div id={id} className="relative w-full h-[80vh] mt-8">
+    <div>
+      <div className="flex flex-col px-[7vw] py-[1vw] justify-start items-center">
+        <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-between w-full mt-6">
+          {/* ปุ่ม Prev (ซ่อนเมื่อมี 1 Slide) */}
+          {!hideNav && (
+            <button className="swiper-button-prev-custom text-customYellow hover:text-blue-400 flex-shrink-0">
+              <ExpandCircleDownOutlinedIcon fontSize="large" className="rotate-90" />
+            </button>
+          )}
+
+          {/* Swiper */}
+          <div className="flex-grow max-w-screen-lg w-full">
+            <Swiper
               breakpoints={{
-                340: {
-                  slidesPerView: 3,
-                  slidesPerGroup: 2,
-                  spaceBetween: 15,
-                },
-                700: {
-                  slidesPerView: 3,
-                  slidesPerGroup:2,
-                  spaceBetween: 15,
-                },
+                0: { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 0 },
+                700: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 8 },
+                1024: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 16 },
               }}
               freeMode={true}
-              pagination={{
-                clickable: true,
-              }}
+              pagination={{ clickable: true }}
               navigation={{
-                prevEl: ".swiper-button-prev-custom",
-                nextEl: ".swiper-button-next-custom",
+                prevEl: hideNav ? null : ".swiper-button-prev-custom",
+                nextEl: hideNav ? null : ".swiper-button-next-custom",
               }}
               autoplay={{
                 delay: 3000,
                 disableOnInteraction: false,
               }}
-              modules={[ Pagination, Navigation, FreeMode, Autoplay]}
-              className="max-w-[90%] lg:max-w-[80%]"
+              modules={[Pagination, Navigation, FreeMode, Autoplay]}
+              className="max-w-full"
             >
               {ServiceData.map((item) => (
                 <SwiperSlide key={item.title}>
                   <Link to={item.link}>
-                    <div className="flex flex-col gap-6 mb-20 group relative shadow-lg rounded-xl px-6 py-8 h-[250px] w-[215px] lg:h-[400px] lg:w-[350px] overflow-hidden cursor-pointer">
+                    <div className="flex-col gap-6 mb-8 group shadow-lg rounded-xl h-[360px] w-[320px] min-h-70 min-w-72 overflow-hidden cursor-pointer">
                       <div
-                        className="absolute inset-0 bg-cover bg-center"
+                        className="absolute flex flex-col inset-0 bg-cover bg-center"
                         style={{ backgroundImage: `url(${item.backgroundImage})` }}
                       />
                       <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
-                        <div className="relative flex gap-3">
+                      <div className="relative flex gap-3">
                         <div className="absolute left-1/2 top-80 transform -translate-x-1/2 -translate-y-1/2 w-full text-center transition-all duration-500 group-hover:top-10">
                           <h1 className="text-xl lg:text-2xl font-bold text-customYellow">{item.title}</h1>
                         </div>
                         {item.bullets && item.bullets.length > 0 && (
-                          <div className="absolute left-1/2 top-[110%] transform -translate-x-1/2 w-[80%] text-left opacity-0 transition-all duration-500 group-hover:top-20 group-hover:opacity-100 ">
+                          <div className="absolute left-1/2 top-[110%] transform -translate-x-1/2 w-[80%] text-left opacity-0 transition-all duration-500 group-hover:top-20 group-hover:opacity-100">
                             <ul className="relative list-disc list-inside text-white text-sm lg:text-lg space-y-1">
                               {item.bullets.map((bullet, index) => (
                                 <li key={index}>{bullet}</li>
@@ -305,81 +304,110 @@ export const ServiceSection: React.FC<ServiceProps> = ({ id, language, img }) =>
                 </SwiperSlide>
               ))}
             </Swiper>
-            <button className="swiper-button-next-custom text-black hover:text-customYellow mr-32">
-                <ArrowBackIosIcon fontSize="large" className="rotate-180"/>
-              </button>
           </div>
-          </div>
+
+          {/* ปุ่ม Next (ซ่อนเมื่อมี 1 Slide) */}
+          {!hideNav && (
+            <button className="swiper-button-next-custom text-customYellow hover:text-blue-400 flex-shrink-0">
+              <ExpandCircleDownOutlinedIcon fontSize="large" className="-rotate-90" />
+            </button>
+          )}
         </div>
-      </section>
-    );
-  }
-  
+      </div>
+    </div>
+  </div>
+);
 };
 
-export const FooterSection:React.FC<CustomerProps> = ({ id, language }) => {
+export const FooterSection: React.FC<CustomerProps> = ({ id, language }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <footer id={id} className="lg:w-[1440px] lg:h-[313px] md:h-[557px] md:w-[744px] sm:h-[875px] ">
-      {/* ภาพพื้นหลัง */}
-      <img
-        src={FooterImg}
-        alt="Styled"
-        className="absolute w-full h-[50vh] object-cover filter brightness-50 contrast-150"
-      />
-      {/* เลเยอร์พื้นหลังเพื่อให้สีเข้มขึ้น */}
-      <div className="absolute w-full h-[50vh] bg-[#155C8A] opacity-50"></div>
+    <footer
+      id={id}
+      className="relative w-full text-white py-10 bg-cover bg-center"
+      style={{ backgroundImage: `url(${FooterImg})` }}
+    >
 
       {/* คอนเทนต์ที่แสดงข้อความ */}
-      <div className="relative flex flex-col justify-center top-[40px]">
-        <div className="flex text-white justify-center space-x-8">
-          
-          <div><img src={theBoxxetIcon} alt="Logo" className="flex w-[164px] h-[187px] sm:w-[140px] sm:h-[160px] md:w-[150px] md:h-[170px] lg:w-[164px] lg:h-[187px]" /></div>
-          <div className="text-left">
-            <div>
-              <h1 className="text-white text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">{translations[language].service}</h1>
-            </div>
-            <div className="mt-10">
-              <h2 className="text-lg">Booth System</h2>
-              <h2 className="text-lg">Booth Set</h2>
-              <h2 className="text-lg">Element Design</h2>
-              <h2 className="text-lg">Event Rental</h2>
-              <h2 className="text-lg">Activity</h2>
-            </div>
-          </div>
-          <div className="text-left">
-            <div><h1 className="text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">FaceBook</h1></div>
-            <div className="mt-10"><img src={facebook} alt="Facebook" className="w-[214px] h-[136px]"/></div>
+      <div className="relative container mx-auto px-4 self-center w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-white justify-center items-center">
+          {/* โลโก้ */}
+          <div className="flex justify-center md:justify-start">
+            <img
+              src={theBoxxetIcon}
+              alt="Logo"
+              className="w-[164px] h-[187px] sm:w-[140px] sm:h-[160px] md:w-[150px] md:h-[170px] lg:w-[164px] lg:h-[187px]"
+            />
           </div>
 
-          <div className="text-left">
-            <h1 className="text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">{translations[language].contactUs}</h1>
-            <div className="flex items-left gap-2 mt-10">
-              <MailOutlineIcon />
-              <h1>theboxxet.contact@gmail.com</h1>
-            </div>
-            <div className="flex items-left gap-2">
-              <CallOutlinedIcon />
-              <h1>095-956-5419, 064-265-9428</h1>
-            </div>
-            <div className="flex text-left gap-2">
-              <PlaceOutlinedIcon />
-              <h1 className="text-balance h-[123px] w-[238px]">The Villa Ramindra 14 134 The Villa Ramindra Bang Khen Tha Raeng, Bang Khen, Bangkok 10220</h1>
-            </div>
-
+          {/* รายการบริการ */}
+          <div>
+            <h1 className="text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">
+              {translations[language].service}
+            </h1>
+            <ul className="mt-4 space-y-2">
+              <li>Booth System</li>
+              <li>Booth Set</li>
+              <li>Element Design</li>
+              <li>Event Rental</li>
+              <li>Activity</li>
+            </ul>
           </div>
-          
-          <div className="text-left">
-            <h1 className="text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">QR Line OA</h1>
-            <div className="mt-10"><img src={LineIcon} alt="Line QR" className=" w-[123px] h-[124px]" /></div>
+
+          {/* Facebook */}
+          <div>
+            <h1 className="text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">
+              FaceBook
+            </h1>
+            <div className="mt-4">
+              <img src={facebook} alt="Facebook" className="w-[214px] h-[136px]" />
+            </div>
+          </div>
+
+          {/* ติดต่อเรา */}
+          <div className="mt-16">
+            <h1 className="text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">
+              {translations[language].contactUs}
+            </h1>
+            <div className="space-y-3 mt-2">
+              <div className="flex items-center gap-2">
+                <MailOutlineIcon />
+                <span>theboxxet.contact@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CallOutlinedIcon />
+                <span>095-956-5419, 064-265-9428</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <PlaceOutlinedIcon />
+                <p className="w-[238px]">
+                  The Villa Ramindra 14, 134 The Villa Ramindra Bang Khen Tha Raeng, Bang Khen, Bangkok 10220
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* QR Code */}
+          <div className="ml-8">
+            <h1 className="text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">
+              QR Line OA
+            </h1>
+            <div className="mt-4">
+              <img src={LineIcon} alt="Line QR" className="w-[123px] h-[124px]" />
+            </div>
           </div>
         </div>
-        <h1 className="mt-2 flex justify-center text-customeWhite">© 2025 THE BOXXET. ltd. All rights reserved.</h1>
+
+        {/* ลิขสิทธิ์ */}
+        <h1 className="mt-8 text-center text-customeWhite">
+          © 2025 THE BOXXET. Ltd. All rights reserved.
+        </h1>
       </div>
     </footer>
   );
 };
+
 
 interface AboutUsProps {
   id: string;
@@ -387,65 +415,57 @@ interface AboutUsProps {
   img: string;
 }
 
-export const AboutSection1: React.FC<AboutUsProps> = ({id, language, img}) => {
+export const AboutSection1: React.FC<AboutUsProps> = ({ language, img }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
   return (
-    <div>
-      <section id={id}>
-        <div className="relative w-full ipadairx:h-[200px] ipadprox:h-[180px] lg:h-[172px] md:h-[172px] sm:h-[96px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
-          <h1 className="absolute font-bold lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
-            {translations[language].aboutImpl}
-          </h1>
-        </div>
-      </section>
+    <div className="w-full h-[30vh]">
+      <div className="px-[7vw] py-[1vw] relative w-full h-full" style={{ backgroundImage: `url(${img})` }}>
+        <h1 className="relative font-bold text-white border-b-4 border-yellow-500 inline-block mt-8" style={{ fontSize: 'clamp(3rem, 5vw, 3rem)' }}>
+          {translations[language].aboutImpl}
+        </h1>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export const GallerySection: React.FC<AboutUsProps> = ({id, language, img}) => {
+export const GallerySection: React.FC<AboutUsProps> = ({ language, img }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
   return (
-    <div>
-       <section id={id}>
-         <div className="relative w-full lg:h-[172px] md:h-[172px] sm:h-[96px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
-           <h1 className="absolute font-bold lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
-             {translations[language].gallery}
-           </h1>
-         </div>
-       </section>
+    <div className="w-full h-[30vh]">
+      <div className="px-[7vw] py-[1vw] relative w-full h-full" style={{ backgroundImage: `url(${img})` }}>
+        <h1 className="relative font-bold text-white border-b-4 border-yellow-500 inline-block mt-8" style={{ fontSize: 'clamp(3rem, 5vw, 3rem)' }}>
+          {translations[language].gallery}
+        </h1>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export const OurServiceSection: React.FC<AboutUsProps> = ({id, language, img}) => {
+export const OurServiceSection: React.FC<AboutUsProps> = ({ language, img }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
   return (
-    <div>
-       <section id={id}>
-        <div className="relative w-full lg:h-[172px] md:h-[172px] sm:h-[96px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
-          <h1 className="absolute font-bold ipadairx:text-6xl ipadprox:text-5xl lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
-            {translations[language].ourProject}
-          </h1>
-        </div>
-      </section>
+    <div className="w-full h-[30vh]">
+      <div className="px-[7vw] py-[1vw] relative w-full h-full" style={{ backgroundImage: `url(${img})` }}>
+        <h1 className="relative font-bold text-white border-b-4 border-yellow-500 inline-block mt-8" style={{ fontSize: 'clamp(3rem, 5vw, 3rem)' }}>
+          {translations[language].ourProject}
+        </h1>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export const ContactSection: React.FC<AboutUsProps> = ({id, language, img}) => {
+export const ContactSection: React.FC<AboutUsProps> = ({ language, img }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
   return (
-    <div>
-       <section id={id}>
-        <div className="relative w-full lg:h-[172px] md:h-[172px] sm:h-[96px] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
-          <h1 className="absolute font-bold  lg:text-5xl md:text-4xl sm:text-2xl text-customeWhite border-b-4 border-customYellow left-24 mt-14">
-            {translations[language].contactUs}
-          </h1>
-        </div>
-      </section>
+    <div className="w-full h-[30vh]">
+      <div className="px-[7vw] py-[1vw] relative w-full h-full" style={{ backgroundImage: `url(${img})` }}>
+        <h1 className="relative font-bold text-white border-b-4 border-yellow-500 inline-block mt-8" style={{ fontSize: 'clamp(3rem, 5vw, 3rem)' }}>
+          {translations[language].contactUs}
+        </h1>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 interface AboutUsDescProps {
   id: string;
@@ -453,44 +473,44 @@ interface AboutUsDescProps {
 
 }
 
-export const AboutSectionDescription: React.FC<AboutUsDescProps> = ({id,language}) => {
+export const AboutSectionDescription: React.FC<AboutUsDescProps> = ({ id, language }) => {
   const langKey = language.toUpperCase();
   const translations: { [key: string]: Translations } = Constants.translations;
-  return(
-    <section id={id} className="lg:w-[1440px] lg:h-[606px] md:w-[714px] md:h-[444px] sm:w-[320px] flex justify-center items-center">
-      <div className="flex lg:w-[1127px] lg:h-[542px] sm:w-[288px] sm:h-[1447px] gap-6 ">
-        <div className="text-black sm:h-[537px] sm:w-[288px] lg:w-[360px] lg:h-[542px]">
-          <div className="lg:w-[360px] lg:h-[29px]"><h1 className="lg:text-2xl md:text-xl sm:text-xs">'ITSMA (อิษมา)'</h1></div>
-          <div className="lg:w-[360px] lg:h-[242px] md:w-[531px] md:h-[95px] ">
-            <p className="mt-6 indent-6 text-pretty sm:text-xs md:text-xl lg:text-[14px] ">{translations[language].aboutPage2Description1}</p>
+
+  return (
+    <section id={id} className="w-full flex justify-center items-center p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-xl">
+        {/* Left Section */}
+        <div className="text-black flex flex-col items-center lg:items-start">
+          <h1 className="text-2xl md:text-xl sm:text-xs">'ITSMA (อิษมา)'</h1>
+          <p className="mt-6 indent-6 text-pretty sm:text-xs md:text-lg lg:text-[14px]">
+            {translations[language].aboutPage2Description1}
+          </p>
+          <div className="w-full mt-6">
+            <img src={aboutUsbuttom} alt="#" className="w-full h-auto" />
           </div>
-            <div className="lg:w-[360px] lg:h-[223px] sm:w-[288px] sm:h-[192px] mt-6">
-              <img src={aboutUsbuttom} alt="#" className="w-full h-full" />
-            </div>
-          </div>
-        <div className="w-[522px] lg:h-[550px] mr-6">
+        </div>
+
+        {/* Middle Section */}
+        <div className="text-center md:text-left">
           <h1 className="text-5xl sm:text-xl text-customBlue font-bold">THE BOXXET</h1>
           <h1 className="text-xs sm:text-[10px] text-black">(บริษัท เดอะ บ๊อกซ์เซ็ต จำกัด)</h1>
           <h1 className="text-xl text-black">DESIGN FOR YOUR FUTURE</h1>
-          <div className="text-black flex flex-col text-wrap indent-6 lg:w-[552px] lg:h-[538px]">
-            <div className="lg:w-[552px] lg:h-[120px] md:w-[531px] md:h-[95px] sm:w-[288px] sm:h-[84px] mt-6">
-              <p dangerouslySetInnerHTML={{ __html: translations[language].aboutPage2Description2 }} />
-            </div>
-            <div className="lg:w-[552px] lg:h-[120px] md:w-[531px] md:h-[95px] sm:w-[288px] sm:h-[84px] mt-6">
-              <p >{translations[language].aboutPage2Description3}</p>
-            </div>
-            <div className="lg:w-[552px] lg:h-[120px] md:w-[531px] md:h-[95px] sm:w-[288px] sm:h-[84px] mt-16">
-              <p >{translations[langKey].aboutPage2Description4}</p>
-            </div>
+          <div className="text-black flex flex-col text-wrap indent-6 mt-6 space-y-6">
+            <p dangerouslySetInnerHTML={{ __html: translations[language].aboutPage2Description2 }} />
+            <p>{translations[language].aboutPage2Description3}</p>
+            <p>{translations[langKey].aboutPage2Description4}</p>
           </div>
         </div>
-        <div className="lg:w-[167px] lg:h-[542px]">
-          <img src={aboutUsbuttomright} alt="styled"  className="w-full h-full"/>
+
+        {/* Right Section */}
+        <div className="flex justify-center lg:justify-end">
+          <img src={aboutUsbuttomright} alt="styled" className="w-full h-auto max-w-[167px]" />
         </div>
       </div>
     </section>
   );
-}
+};
 
 interface BoothProps {
   id: string;

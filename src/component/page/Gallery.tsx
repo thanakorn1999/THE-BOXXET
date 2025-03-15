@@ -20,9 +20,8 @@ const GalleryPage: React.FC =() => {
         setLanguage={setLanguage}
         page='gallery'
       /> 
-      <OurServiceSection id = "about-gallery-section" language={language} img={gallery}/>
+      <OurServiceSection id='' language={language} img={gallery}/>
       <ServiceSection id="service-section" language={language} img={""}/>
-      <CustomerSection id="customer-gallery-section" language={language}/>
       <OurProject id="ourProject-gallery-section" language={language} pic={ourProject} />
       <FooterSection id="footer-gallery-section" language={language} />
     </div>
