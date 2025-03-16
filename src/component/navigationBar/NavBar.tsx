@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
   const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
-  const { language, setLanguage } = useLanguage(); 
+  const { language} = useLanguage(); 
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
 
   useEffect(() => {
@@ -56,15 +56,15 @@ const NavBar: React.FC = () => {
           <div className={`lg:flex ${menuOpen ? "block" : "hidden"} flex-col lg:flex-row gap-4 items-center w-full lg:w-auto mt-4 lg:mt-0`}>
             <Link to="/">{Button.LetterNavBarButton("#", language, "home")}</Link>
             <Link to= "/about-us">{Button.LetterNavBarButton("#", language, "about")}</Link>
-            <button onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
-              <div className="relative">
-                <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded">
-                  {Button.LetterNavBarButton("#", language, "service")}
-                  <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
+            <button >
+                <div className="relative">
+                  <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
+                    {Button.LetterNavBarButton("#",language,"service")}
+                    <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
+                  </div>
+                    {serviceDropdownOpen && <ServiceDropDown/>}
                 </div>
-                {serviceDropdownOpen && <ServiceDropDown />}
-              </div>
-            </button>
+              </button>
             <Link to="/gallery-page"><button>{Button.LetterNavBarButton("#", language, "gallery")}</button></Link>
             <Link to="/contact"><button>{Button.LetterNavBarButton("#", language, "contactUs")}</button></Link>
             <span className="hidden lg:block">|</span>

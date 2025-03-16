@@ -201,7 +201,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({
   img,
 }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
-  const [hideNav, setHideNav] = useState(false);
+  const [hideNav] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -532,7 +532,7 @@ export const AboutSection1: React.FC<AboutUsProps> = ({ language, img }) => {
   return (
     <div className="w-full h-[30vh]">
       <div
-        className="px-[7vw] py-[1vw] relative w-full h-full"
+        className="px-[7vw] py-[1vw] w-full h-[30vh]"
         style={{
           backgroundImage: `url(${img})`,
           backgroundPosition: 'center',

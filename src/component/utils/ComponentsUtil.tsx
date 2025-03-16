@@ -59,9 +59,9 @@ export const ServiceDropDown: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="absolute bg-customBlue text-customYellow mt-2 rounded py-2 z-50 w-64 ">
+    <div className="absolute bg-customBlue text-customYellow mt-2 rounded shadow- py-2 z-50 w-64 ">
         <div onClick={() => navigate("/gallery")} className="flex justify-between px-4 py-2 hover:text-black hover:bg-customYellow cursor-pointer text-left ml-2 mr-2">
-          <p className="text-lg">All Service</p>  
+          <p>All Service</p>  
         </div>
       {BoothData.map((category) => (
         <div key={category.id} className="flex rounded relative">
