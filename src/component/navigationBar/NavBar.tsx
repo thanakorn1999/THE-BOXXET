@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import LogoIcon from "../../assets/logo/the-boxext.png"
 import transalateIcon from "../../assets/logo/g_translate.png"
 import dropDownIcon from "../../assets/logo/Chevron down.png"
 import Button from '../page/Button'
 import { Link } from "react-router-dom"
 import { ServiceDropDown, ScrollToSection, LanguageDropdown,  } from "../utils/ComponentsUtil"
+import HambergerNavBar from "../navigationBar/hamberger-nav-bar"
 
 interface NavBar {
   about: string;
@@ -12,13 +13,29 @@ interface NavBar {
   contactUs: string;
   language: "EN" | "TH";
   setLanguage: (lang: "EN" | "TH" ) => void
-  page: string;
+  page: string; 
 }
 
 const NavBar:React.FC<NavBar> = ({about,gallery,contactUs,language,setLanguage,page}) => {
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    window.addEventListener("resize", checkScreenSize);
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
+
+  if (isMobile) {
+    return <HambergerNavBar language={language} setLanguage={setLanguage} />;
+  }
   
   if("about-page" === page){
     return (
