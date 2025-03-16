@@ -7,6 +7,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Noto Sans Thai", "sans-serif"],
+      },
+      textIndent:{
+        8: "2rem",
+        12: "3rem",
+      },
       colors: {
         customeWhite: '#FFFFFF',
         customYellow: '#FFC905',
