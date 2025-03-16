@@ -129,6 +129,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     localStorage.setItem("language", lang);
     setLanguage(lang);
   };
+  
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage: changeLanguage }}>
