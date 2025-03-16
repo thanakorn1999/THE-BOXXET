@@ -692,10 +692,10 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
   return (
     <div id={id} className="flex flex-col w-full px-5 xl:px-40 mb-10">
       <div className="flex flex-col w-full ">
-        <h1 className="text-black text-5xl font-bold text-start mt-10">
+        <h1 className="text-black text-2xl xl:text-5xl font-bold text-start mt-5">
           {selectedBoothCategory?.titleMain}
         </h1>
-        <div className="flex text-center gap-6 mt-8">
+        <div className="flex text-center gap-6 mt-4">
           {selectedBoothCategory?.data.map((booth, index) => (
             <div
               key={index}
