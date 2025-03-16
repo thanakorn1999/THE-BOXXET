@@ -20,7 +20,7 @@ const MainPage: React.FC =() => {
     const THE_BOXXET: string = "THE BOXXET";
     const DESCRIPTION_MESSAGE_TOP: string = "Booth and Event rental services, Designed to suit all your types of events and activities";
     const  DESCRIPTION_MESSAGE_footer: string = "Contract Us @theboxxet"
-    const { language, setLanguage } = useLanguage(); 
+    const { language} = useLanguage(); 
     const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
     const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState("home")

@@ -4,12 +4,12 @@ import LogoIcon from "../../assets/logo/the-boxext.png"; // ปรับ path �
 import dropDownIcon from "../../assets/logo/Chevron down.png"; // ปรับ path ตามไฟล์จริง
 import transalateIcon from "../../assets/logo/g_translate.png"; // ปรับ path ตามไฟล์จริง
 import { useLanguage,LanguageSwitcherApp } from "../utils/ComponentsUtil";
-import { Constants, Translations } from "../constants/Constants";
+import { Constants} from "../constants/Constants";
 
 
 const HambergerNavBar: React.FC<{}> = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { language, setLanguage } = useLanguage(); 
+  const { language} = useLanguage(); 
   const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const translations = Constants.translations[language];
