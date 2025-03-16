@@ -32,6 +32,8 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import { GalleryImg } from "../../component/constants/gallery-index.ts";
 import { FaLine } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import useStore from "../../store";
+
 
 interface SessionProps {
   id: string;
@@ -49,45 +51,46 @@ export const Session: React.FC<SessionProps> = ({
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <section id={id} className="px-[7vw] py-[1vw] max-w-[90vw] w-full">
-      {/* Header ABOUT */}
-      <div className="text-left w-full mt-8">
-        <h1 className="font-bold border-b-4 border-black inline-block text-[clamp(2rem,5vw,3rem)]">
+    <section
+    id={id}
+    className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full  text-center md:text-left py-9"
+  >
+    {/* ส่วนซ้าย: รูป + Title */}
+    <div className="flex flex-col justify-center items-center px-6">
+      <div className="w-[500px]">
+        <h1 className="font-bold sm:text-2xl md:text-3xl lg:text-5xl border-b-4 border-black inline-block px-4">
           {translations[language].about}
         </h1>
       </div>
 
-      {/* Layout Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 w-full items-center">
-        {/* รูปภาพ */}
-        <div className="flex justify-center max-w-lg mx-auto">
-          <img
-            src={pic}
-            alt={landing}
-            className="w-full h-auto object-cover rounded-xl shadow-lg"
-          />
-        </div>
-
-        {/* ข้อความ */}
-        <div className="flex flex-col justify-center text-center md:text-left max-w-xl mx-auto">
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">
-            {translations[language].contractUsMainTitle}
-          </h1>
-          <h2 className="text-lg md:text-xl lg:text-2xl mt-2">
-            {translations[language].contractUsSubTitle}
-          </h2>
-          <p className="text-gray-600 mt-6 text-pretty whitespace-normal leading-relaxed">
-            {translations[language].contractUsdescription}
-          </p>
-          <Link
-            to="/contact"
-            className="text-center bg-customBlue text-customYellow py-3 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-lg"
-          >
-            {translations[language].contactUs}
-          </Link>
-        </div>
+      <div className="flex justify-center max-w-[500px] mt-4">
+        <img
+          src={pic}
+          alt={landing}
+          className="w-full h-auto object-cover rounded-xl shadow-lg"
+        />
       </div>
-    </section>
+    </div>
+
+    {/* ส่วนขวา: ข้อความ + ปุ่ม */}
+    <div className=" flex flex-col justify-center items-center px-6">
+      <h1 className="sm:text-xs md:text-xl lg:text-3xl 2xl:text-4xl font-bold">
+        {translations[language].contractUsMainTitle}
+      </h1>
+      <h2 className="sm:text-xs md:text-xl lg:text-2xl 2xl:text-3xl mt-2">
+        {translations[language].contractUsSubTitle}
+      </h2>
+      <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-6 leading-relaxed">
+        {translations[language].contractUsdescription}
+      </p>
+      <Link
+        to="/contact"
+        className="text-center w-full bg-customBlue text-customYellow py-3 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-[clamp(1rem, 2vw, 1.25rem)]"
+      >
+        {translations[language].contactUs}
+      </Link>
+    </div>
+  </section>
   );
 };
 
@@ -103,9 +106,10 @@ export const OurProject: React.FC<OurProjectProps> = ({
   pic,
 }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
+  const widthLanguage = useStore((state) => state.withLanguage);
 
   return (
-    <section id={id} className="w-full h-[50vh]">
+    <section id={id} className={`w-full ${widthLanguage ? "h-[28vh]" : "h-[50vh]"}`}>
       <div
         className="w-full h-full grid place-items-center"
         style={{
@@ -203,6 +207,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({
   const translations: { [key: string]: Translations } = Constants.translations;
   const [hideNav] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const withLanguage = useStore((state) => (state.withLanguage));
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -219,7 +224,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({
 
   if (img) {
     return (
-      <div id={id} className="relative w-full h-[100vh]">
+      <div id={id} className={`relative w-full ${withLanguage ? "h-auto" : "h-[100vh]"} `}>
         <div>
           <img
             src={img}
@@ -331,7 +336,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({
     );
   } else
     return (
-      <div id={id} className="relative w-full h-[80vh] mt-8">
+      <div id={id} className={`relative w-full ${withLanguage ? "h-auto" : "h-[80vh]"} mt-8`}>
         <div>
           <div className="flex flex-col px-[7vw] py-[1vw] justify-start items-center">
             <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-between w-full mt-6">
