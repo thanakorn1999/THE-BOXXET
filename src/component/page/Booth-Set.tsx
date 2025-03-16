@@ -1,22 +1,13 @@
-import React, { useState } from 'react'
-useState
 import NavBar from "../navigationBar/NavBar";
 import { OurProject, FooterSection, BoothsSection,} from "./Session";
 import ourProject from "../../assets/page/our-project.png"
+import { useLanguage } from '../utils/ComponentsUtil';
 
 const Boots:React.FC =() => {
-    type Langague = "EN" | "TH";
-    const [language, setLanguage] = useState<Langague>('EN');
+  const { language } = useLanguage();
   return (
     <div>
-        <NavBar 
-        about="aboutPage2Des-section" 
-        gallery="ourProjectPage2-section" 
-        contactUs="footerPage2-section"
-        language={language}
-        setLanguage={setLanguage}
-        page='gallery'
-      /> 
+        <NavBar /> 
       <BoothsSection id = "about-boots-section" language={language} pageId="2"/>
       <OurProject id="ourProject-boots-section" language={language} pic={ourProject} />
       <FooterSection id="footer-boots-section" language={language} />

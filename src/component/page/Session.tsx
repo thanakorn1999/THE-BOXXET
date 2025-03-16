@@ -533,7 +533,12 @@ export const AboutSection1: React.FC<AboutUsProps> = ({ language, img }) => {
     <div className="w-full h-[30vh]">
       <div
         className="px-[7vw] py-[1vw] relative w-full h-full"
-        style={{ backgroundImage: `url(${img})` }}
+        style={{
+          backgroundImage: `url(${img})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
         <h1
           className="relative font-bold text-white border-b-4 border-yellow-500 inline-block mt-8"
@@ -552,7 +557,12 @@ export const GallerySection: React.FC<AboutUsProps> = ({ language, img }) => {
     <div className="w-full h-[30vh]">
       <div
         className="px-[7vw] py-[1vw] relative w-full h-full"
-        style={{ backgroundImage: `url(${img})` }}
+        style={{
+          backgroundImage: `url(${img})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
         <h1
           className="relative font-bold text-white border-b-4 border-yellow-500 inline-block mt-8"
@@ -574,7 +584,12 @@ export const OurServiceSection: React.FC<AboutUsProps> = ({
     <div className="w-full h-[30vh]">
       <div
         className="px-[7vw] py-[1vw] relative w-full h-full"
-        style={{ backgroundImage: `url(${img})` }}
+        style={{
+          backgroundImage: `url(${img})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
         <h1
           className="relative font-bold text-white border-b-4 border-yellow-500 inline-block mt-8"
@@ -593,7 +608,12 @@ export const ContactSection: React.FC<AboutUsProps> = ({ language, img }) => {
     <div className="w-full h-[30vh]">
       <div
         className="px-[7vw] py-[1vw] relative w-full h-full"
-        style={{ backgroundImage: `url(${img})` }}
+        style={{
+          backgroundImage: `url(${img})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
         <h1
           className="relative font-bold text-white border-b-4 border-yellow-500 inline-block mt-8"

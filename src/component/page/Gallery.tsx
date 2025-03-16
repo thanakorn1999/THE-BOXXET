@@ -1,25 +1,16 @@
-import React, { useState } from 'react'
-useState
 import NavBar from "../../component/navigationBar/NavBar";
 import { OurProject, FooterSection, OurServiceSection, ServiceSection} from "./Session";
 import gallery from "../../assets/page/gallary-section.png"
 import ourProject from "../../assets/page/our-project.png"
+import { useLanguage } from '../utils/ComponentsUtil';
 
 
 
 const GalleryPage: React.FC =() => {
-    type Langague = "EN" | "TH"
-    const [language, setLanguage] = useState<Langague>('EN');
+  const { language } = useLanguage();
   return (
     <div>
-        <NavBar 
-        about="aboutPage2Des-section" 
-        gallery="ourProjectPage2-section" 
-        contactUs="footerPage2-section"
-        language={language}
-        setLanguage={setLanguage}
-        page='gallery'
-      /> 
+        <NavBar /> 
       <OurServiceSection id='' language={language} img={gallery}/>
       <ServiceSection id="service-section" language={language} img={""}/>
       <OurProject id="ourProject-gallery-section" language={language} pic={ourProject} />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import imageMainPage from "../../assets/page/mainPagePic.png"
 import theBoxxetIcon from "../../assets/logo/the-boxext.png"
 import transalateIcon from "../../assets/logo/g_translate.png"
@@ -8,11 +8,11 @@ import Button from "./Button";
 import AboutUsImage from "../../assets/page/about-us.png"
 import OurProjectImg from "../../assets/page/our-project.png"
 import { Link, useNavigate } from 'react-router-dom';
-import { ServiceDropDown, LanguageDropdown } from "../utils/ComponentsUtil";
+import { ServiceDropDown, LanguageSwitcher, useLanguage } from "../utils/ComponentsUtil";
+import HambergerNavBar from "../navigationBar/hamberger-nav-bar";
 
 
 const MainPage: React.FC =() => {
-    type Langague = "EN" | "TH"
 
     // constant 
 
@@ -20,8 +20,7 @@ const MainPage: React.FC =() => {
     const THE_BOXXET: string = "THE BOXXET";
     const DESCRIPTION_MESSAGE_TOP: string = "Booth and Event rental services, Designed to suit all your types of events and activities";
     const  DESCRIPTION_MESSAGE_footer: string = "Contract Us @theboxxet"
-
-    const [language, setLanguage] = useState<Langague>('TH');
+    const { language, setLanguage } = useLanguage(); 
     const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
     const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState("home")
@@ -57,48 +56,68 @@ const MainPage: React.FC =() => {
 
     const NavSectionOfMainPage = () => {
       const navigate = useNavigate()
-      return (
-        <div className="relative top-0 left-0 w-full z-50 bg-transparent ">
-          <div className="container mx-auto max-w-screen-xl flex justify-between items-center py-4 px-6 text-white">
-            {/* ด้านซ้าย  Icon */}
-            <div className="flex items-center gap-4">
-              <a href="#">
-                <img src={theBoxxetIcon} alt="Logo" className="w-14 uppercase" />
-              </a>
-            </div>
+      const [isMobile, setIsMobile] = useState(window.innerWidth <1024);
+      useEffect(()=>{
+        const checkScreenSize = () => {
+          setIsMobile(window.innerWidth <1024);
+        };
+        window.addEventListener("resize", checkScreenSize);
+        return () => {
+          window.removeEventListener("resize", checkScreenSize);
+        };
+      }, []);
 
-            {/* ด้านขวา */}
-            <div className="flex gap-4 items-center">
-              <button onClick={() => setCurrentPage("home")}>{Button.LetterNavBarButton("#",language,"home")}</button>
-              <button onClick={() => navigate("/about-us")}>{Button.LetterNavBarButton("#", language, "about")}</button>
-              <button >
+      
+      if (isMobile){
+        return (
+          <div className="relative top-0 left-0 w-full z-50 bg-transparent">
+            <HambergerNavBar/>
+          </div>
+        );
+      }else {
+        return (
+          <div className="relative top-0 left-0 w-full z-50 bg-transparent ">
+            <div className="container mx-auto max-w-screen-xl flex justify-between items-center py-4 px-6 text-white">
+              {/* ด้านซ้าย  Icon */}
+              <div className="flex items-center gap-4">
+                <a href="#">
+                  <img src={theBoxxetIcon} alt="Logo" className="w-14 uppercase ml-8" />
+                </a>
+              </div>
+  
+              {/* ด้านขวา */}
+              <div className="flex gap-4 items-center">
+                <button onClick={() => setCurrentPage("home")}>{Button.LetterNavBarButton("#",language,"home")}</button>
+                <button onClick={() => navigate("/about-us")}>{Button.LetterNavBarButton("#", language, "about")}</button>
+                <button >
+                  <div className="relative">
+                    <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
+                    {Button.LetterNavBarButton("#",language,"service")}
+                      <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
+                    </div>
+                    {serviceDropdownOpen && <ServiceDropDown/>}
+                  </div>
+                </button>
+                <Link to={"/gallery-page"}><button>{Button.LetterNavBarButton("#",language,"gallery")}</button></Link>
+                <Link to={"/contract"}><button>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
+                <span>|</span>
                 <div className="relative">
-                  <div className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded" onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}>
-                  {Button.LetterNavBarButton("#",language,"service")}
+                  <div
+                    className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded"
+                    onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
+                  >
+                    <img src={transalateIcon} alt="Translate Icon" className="w-6" />
+                    <span>{language}</span>
                     <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
                   </div>
-                  {serviceDropdownOpen && <ServiceDropDown/>}
+                  {/* เรียกใช้งาน function languageDropdown */}
+                 {languageDropdownOpen && <LanguageSwitcher/>}
                 </div>
-              </button>
-              <Link to={"/gallery-page"}><button>{Button.LetterNavBarButton("#",language,"gallery")}</button></Link>
-              <Link to={"/contract"}><button>{Button.LetterNavBarButton("#",language,"contactUs")}</button></Link>
-              <span>|</span>
-              <div className="relative">
-                <div
-                  className="flex gap-1 items-center cursor-pointer hover:text-black hover:bg-customYellow px-3 py-2 rounded"
-                  onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                >
-                  <img src={transalateIcon} alt="Translate Icon" className="w-6" />
-                  <span>{language}</span>
-                  <img src={dropDownIcon} alt="Dropdown Icon" className="w-3" />
-                </div>
-                {/* เรียกใช้งาน function languageDropdown */}
-                {languageDropdownOpen && <LanguageDropdown setLanguage={setLanguage} setLanguageDropdownOpen={setLanguageDropdownOpen} />}
-              </div>
+            </div>
           </div>
         </div>
-      </div>
-      );
+        );
+      }; 
     };
 
     // ALL Service dropdown

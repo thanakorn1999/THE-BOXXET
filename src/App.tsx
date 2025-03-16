@@ -9,27 +9,28 @@ import RentalEvent from "./component/page/Rental-Event"
 import ActivityEvent from "./component/page/Activity-Event"
 import ContractPage from "./component/page/Contract"
 import Gallery from "./component/page/GalleryPage"
-import { ScrollToTop } from './component/utils/ComponentsUtil';
+import { LanguageProvider } from "./component/utils/ComponentsUtil";
 
 
 const App: React.FC = () => {
 
   return (
-    <Router>
-      <ScrollToTop/>
+    <LanguageProvider>
+      <Router>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/about-us" element={<AboutUsPage />} />
-        <Route path = "/gallery" element={<GalleryPage/>}/>
-        <Route path='/booth-system' element = {<BoothSystem/>} />
-        <Route path='/booth-set'element={<BoothSet/>}/>
-        <Route path='/element-design' element={<EventRental/>}/>
-        <Route path='/event-rental' element={<RentalEvent/>}/>
-        <Route path='/activity' element={<ActivityEvent/>}/>
-        <Route path='/contact' element={<ContractPage/>}/>
-        <Route path='/gallery-page' element={<Gallery/>}/>
-      </Routes>
-    </Router>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path = "/gallery" element={<GalleryPage/>}/>
+          <Route path='/booth-system' element = {<BoothSystem/>} />
+          <Route path='/booth-set'element={<BoothSet/>}/>
+          <Route path='/element-design' element={<EventRental/>}/>
+          <Route path='/event-rental' element={<RentalEvent/>}/>
+          <Route path='/activity' element={<ActivityEvent/>}/>
+          <Route path='/contact' element={<ContractPage/>}/>
+          <Route path='/gallery-page' element={<Gallery/>}/>
+        </Routes>
+      </Router>
+    </LanguageProvider>
   );
 };
 

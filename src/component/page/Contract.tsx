@@ -1,23 +1,14 @@
-import React, { useState } from 'react'
-useState
 import NavBar from "../navigationBar/NavBar";
 import { OurProject, FooterSection, ContractComponent, CustomerSection, ContactSection } from "./Session";
 import ContractImg from "../../assets/page/contact-img.png"
 import ourProject from "../../assets/page/our-project.png"
+import { useLanguage } from '../utils/ComponentsUtil';
 
 const Contract:React.FC =() => {
-    type Langague = "EN" | "TH";
-    const [language, setLanguage] = useState<Langague>('EN');
+  const { language } = useLanguage();
   return (
     <div>
-        <NavBar 
-        about="aboutPage2Des-section" 
-        gallery="ourProjectPage2-section"
-        contactUs="footerPage2-section"
-        language={language}
-        setLanguage={setLanguage}
-        page='gallery'
-      /> 
+        <NavBar /> 
       <ContactSection id='conact-section-1' language={language} img = {ContractImg}/>
       <ContractComponent id='contract-section' language={language}/>
       <CustomerSection id='customer-section' language={language}/>
