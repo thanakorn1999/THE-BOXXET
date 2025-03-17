@@ -143,7 +143,7 @@ const MainPage: React.FC = () => {
                   {Button.LetterNavBarButton("#", language, "gallery")}
                 </button>
               </Link>
-              <Link to={"/contract"}>
+              <Link to={"/contact"}>
                 <button>
                   {Button.LetterNavBarButton("#", language, "contactUs")}
                 </button>

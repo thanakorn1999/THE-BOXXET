@@ -58,7 +58,7 @@ export const Session: React.FC<SessionProps> = ({
     {/* ส่วนซ้าย: รูป + Title */}
     <div className="flex flex-col justify-center items-center px-6">
       <div className="w-[500px]">
-        <h1 className="font-bold sm:text-2xl md:text-3xl lg:text-5xl border-b-4 border-black inline-block px-4">
+        <h1 className="font-bold border-b-4 border-black inline-block px-4" style={{ fontSize: "clamp(3rem, 5vw, 3rem)" }}>
           {translations[language].about}
         </h1>
       </div>
@@ -336,7 +336,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({
     );
   } else
     return (
-      <div id={id} className={`relative w-full ${withLanguage ? "h-auto" : "h-[80vh]"} mt-8`}>
+      <div id={id} className={`relative w-full ${withLanguage ? "h-auto" : "h-[60vh]"} mt-8`}>
         <div>
           <div className="flex flex-col px-[7vw] py-[1vw] justify-start items-center">
             <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-between w-full mt-6">
