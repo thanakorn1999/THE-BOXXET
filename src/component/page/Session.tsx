@@ -32,7 +32,7 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import { GalleryImg } from "../../component/constants/gallery-index.ts";
 import { FaLine } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import useStore from "../../store";
+
 
 
 interface SessionProps {
