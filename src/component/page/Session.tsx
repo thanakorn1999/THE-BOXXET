@@ -53,11 +53,11 @@ export const Session: React.FC<SessionProps> = ({
   return (
     <section
     id={id}
-    className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full  text-center md:text-left py-9"
+    className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full  text-center md:text-left py-9 "
   >
     {/* ส่วนซ้าย: รูป + Title */}
-    <div className="flex flex-col justify-center items-center px-6">
-      <div className="w-[500px]">
+    <div className="flex flex-col justify-center items-center px-6 ">
+      <div className="w-full xl:w-[500px] ">
         <h1 className="font-bold border-b-4 border-black inline-block px-4" style={{ fontSize: "clamp(3rem, 5vw, 3rem)" }}>
           {translations[language].about}
         </h1>
@@ -106,10 +106,9 @@ export const OurProject: React.FC<OurProjectProps> = ({
   pic,
 }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
-  const widthLanguage = useStore((state) => state.withLanguage);
 
   return (
-    <section id={id} className={`w-full ${widthLanguage ? "h-[28vh]" : "h-[50vh]"}`}>
+    <section id={id} className={`w-full h-auto`}>
       <div
         className="w-full h-full grid place-items-center"
         style={{
@@ -119,7 +118,7 @@ export const OurProject: React.FC<OurProjectProps> = ({
         }}
       >
         {/* เนื้อหา */}
-        <div className="z-10 flex flex-col items-center text-center w-full max-w-3xl px-6">
+        <div className="z-10 flex flex-col items-center text-center w-full max-w-3xl px-6 py-20">
           <h1
             className="text-customYellow font-bold"
             style={{ fontSize: "clamp(3rem, 5vw, 3rem)" }}
@@ -152,7 +151,7 @@ export const CustomerSection: React.FC<CustomerProps> = ({ id, language }) => {
   return (
     <section
       id={id}
-      className="w-full h-[50vh] flex justify-center items-center mt-8 px-4"
+      className="w-full h-auto flex justify-center items-center mt-8 px-4 pt-20 pb-10"
     >
       <div className="text-center w-full max-w-8xl">
         <h1
@@ -207,7 +206,6 @@ export const ServiceSection: React.FC<ServiceProps> = ({
   const translations: { [key: string]: Translations } = Constants.translations;
   const [hideNav] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const withLanguage = useStore((state) => (state.withLanguage));
 
   useEffect(() => {
     const checkScreenSize = () => {
