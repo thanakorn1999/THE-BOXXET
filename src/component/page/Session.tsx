@@ -224,12 +224,12 @@ export const ServiceSection: React.FC<ServiceProps> = ({
 
   if (img) {
     return (
-      <div id={id} className={`relative w-full ${withLanguage ? "h-auto" : "h-[100vh]"} `}>
+      <div id={id} className="relative w-full h-auto pb-20">
         <div>
           <img
             src={img}
             alt="Styled"
-            className="absolute w-full h-full object-cover filter brightness-50 contrast-150"
+            className="absolute w-full h-full object-cover filter brightness-50 contrast-150 pb-0"
           />
           <div className="absolute top-0 left-0 w-full h-full bg-[#09283C] opacity-50"></div>
           <div className="flex flex-col px-[7vw] py-[1vw]">
@@ -336,7 +336,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({
     );
   } else
     return (
-      <div id={id} className={`relative w-full ${withLanguage ? "h-auto" : "h-[60vh]"} mt-8`}>
+      <div id={id} className="relative w-full  mt-8 h-auto pb-20">
         <div>
           <div className="flex flex-col px-[7vw] py-[1vw] justify-start items-center">
             <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-between w-full mt-6">
@@ -734,7 +734,7 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
             </div>
           ))}
         </div>
-        <div className="bg-customYellow w-full h-2"></div>
+        <div className="bg-customYellow w-full md:h-2 h-4 "></div>
         <div className="mt-6">
           <div className="flex flex-col xl:flex-row justify-center items-center gap-8">
             <div className="flex">
@@ -769,9 +769,9 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
               </button>
             </div>
 
-            <div className="w-full h-auto  text-left xl:w-[630px] xl:h-[490px] bg-gray-200 border-l-4 border-black  xl:border-gray-400">
+            <div className="w-full h-auto  text-left xl:w-[630px] xl:h-[490px] bg-gray-200 border-l-4 border-black  xl:border-gray-400 ">
               <div className="mt-4 ml-4 mr-4">
-                <div className="h-9">
+                <div className="h-auto">
                   <h1 className="text-4xl xl:text-2xl">{selectedBooth?.title}</h1>
                 </div>
                 {selectedBooth?.price && selectedBooth?.price.length > 0 && (
@@ -797,7 +797,7 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
                         </ul>
                       )}
                   </div>
-                  <div className="xl:w-[600px] w-full">
+                  <div className="w-full">
                     {selectedBooth?.Implementation &&
                       selectedBooth?.Implementation.length > 0 && (
                         <ButtomBlue
