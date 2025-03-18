@@ -33,8 +33,6 @@ import { FaLine } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { FacebookPagePlugin } from "../utils/ComponentsUtil.tsx";
 
-
-
 interface SessionProps {
   id: string;
   language: string;
@@ -51,46 +49,85 @@ export const Session: React.FC<SessionProps> = ({
   const translations: { [key: string]: Translations } = Constants.translations;
 
   return (
-    <section
-    id={id}
-    className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full  text-center md:text-left py-9 "
-  >
-    {/* ส่วนซ้าย: รูป + Title */}
-    <div className="flex flex-col justify-center items-center px-6 ">
-      <div className="w-full xl:w-[500px] ">
-        <h1 className="font-bold border-b-4 border-black inline-block px-4" style={{ fontSize: "clamp(3rem, 5vw, 3rem)" }}>
+    //   <section
+    //   id={id}
+    //   className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full  text-center md:text-left py-9 "
+    // >
+    //   {/* ส่วนซ้าย: รูป + Title */}
+    //   <div className="flex flex-col justify-center items-center px-6 ">
+    //     <div className="w-full xl:w-[500px] ">
+    //       <h1 className="font-bold border-b-4 border-black inline-block px-4" style={{ fontSize: "clamp(3rem, 5vw, 3rem)" }}>
+    //         {translations[language].about}
+    //       </h1>
+    //     </div>
+
+    //     <div className="flex justify-center max-w-[500px] mt-4">
+    //       <img
+    //         src={pic}
+    //         alt={landing}
+    //         className="w-full h-auto object-cover rounded-xl shadow-lg"
+    //       />
+    //     </div>
+    //   </div>
+
+    //   {/* ส่วนขวา: ข้อความ + ปุ่ม */}
+    //   <div className=" flex flex-col justify-center items-center px-6">
+    //     <h1 className="sm:text-xs md:text-xl lg:text-3xl 2xl:text-4xl font-bold">
+    //       {translations[language].contractUsMainTitle}
+    //     </h1>
+    //     <h2 className="sm:text-xs md:text-xl lg:text-2xl 2xl:text-3xl mt-2">
+    //       {translations[language].contractUsSubTitle}
+    //     </h2>
+    //     <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-6 leading-relaxed">
+    //       {translations[language].contractUsdescription}
+    //     </p>
+    //     <Link
+    //       to="/contact"
+    //       className="text-center w-full bg-customBlue text-customYellow py-3 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-[clamp(1rem, 2vw, 1.25rem)]"
+    //     >
+    //       {translations[language].contactUs}
+    //     </Link>
+    //   </div>
+    // </section>
+    <>
+      <div className="mx-4 mb-5 sm:mx-52 sm:mb-10">
+        <h1
+          className="font-bold border-b-4 border-black inline-block px-4"
+          style={{ fontSize: "clamp(3rem, 5vw, 3rem)" }}
+        >
           {translations[language].about}
         </h1>
+        <section id={id}>
+          <div className="w-full mt-5">
+            <div className="w-full flex flex-col xl:flex-row ">
+              <div className="w-full ">
+                <img
+                  src={pic}
+                  alt={landing}
+                  className="w-full h-auto object-cover rounded-xl shadow-lg"
+                />
+              </div>
+              <div className="w-full flex flex-col h-auto ml-4 mt-4 xl:mt-0  ">
+                <h1 className="sm:text-xs md:text-xl lg:text-3xl 2xl:text-4xl font-bold">
+                  {translations[language].contractUsMainTitle}
+                </h1>
+                <h2 className="sm:text-xs md:text-xl lg:text-2xl 2xl:text-3xl mt-2">
+                  {translations[language].contractUsSubTitle}
+                </h2>
+                <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-6 leading-relaxed">
+                  {translations[language].contractUsdescription}
+                </p>
+                <Link to="/contact">
+                  <button className="text-center w-auto bg-customBlue text-customYellow py-3 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-[clamp(1rem, 2vw, 1.25rem)]">
+                    {translations[language].contactUs}
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-
-      <div className="flex justify-center max-w-[500px] mt-4">
-        <img
-          src={pic}
-          alt={landing}
-          className="w-full h-auto object-cover rounded-xl shadow-lg"
-        />
-      </div>
-    </div>
-
-    {/* ส่วนขวา: ข้อความ + ปุ่ม */}
-    <div className=" flex flex-col justify-center items-center px-6">
-      <h1 className="sm:text-xs md:text-xl lg:text-3xl 2xl:text-4xl font-bold">
-        {translations[language].contractUsMainTitle}
-      </h1>
-      <h2 className="sm:text-xs md:text-xl lg:text-2xl 2xl:text-3xl mt-2">
-        {translations[language].contractUsSubTitle}
-      </h2>
-      <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-6 leading-relaxed">
-        {translations[language].contractUsdescription}
-      </p>
-      <Link
-        to="/contact"
-        className="text-center w-full bg-customBlue text-customYellow py-3 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-[clamp(1rem, 2vw, 1.25rem)]"
-      >
-        {translations[language].contactUs}
-      </Link>
-    </div>
-  </section>
+    </>
   );
 };
 
@@ -468,7 +505,7 @@ export const FooterSection: React.FC<CustomerProps> = ({ id, language }) => {
               FaceBook
             </h1>
             <div className="mt-4">
-              <FacebookPagePlugin/>
+              <FacebookPagePlugin />
             </div>
           </div>
 
@@ -488,7 +525,10 @@ export const FooterSection: React.FC<CustomerProps> = ({ id, language }) => {
               </div>
               <div className="flex items-start gap-2">
                 <PlaceOutlinedIcon />
-                <a href="https://www.google.com/maps/dir//The+Villa+Ramintra+14+134+The+Villa+%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B2-%E0%B8%A7%E0%B8%87%E0%B9%81%E0%B8%AB%E0%B8%A7%E0%B8%99+Tha+Raeng,+Bang+Khen,+Bangkok+10220/@13.8594214,100.6666058,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x311d63299f994771:0xe8a631c6d650331d!2m2!1d100.6666024!2d13.8594292?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D" className="w-[238px]">
+                <a
+                  href="https://www.google.com/maps/dir//The+Villa+Ramintra+14+134+The+Villa+%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B2-%E0%B8%A7%E0%B8%87%E0%B9%81%E0%B8%AB%E0%B8%A7%E0%B8%99+Tha+Raeng,+Bang+Khen,+Bangkok+10220/@13.8594214,100.6666058,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x311d63299f994771:0xe8a631c6d650331d!2m2!1d100.6666024!2d13.8594292?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D"
+                  className="w-[238px]"
+                >
                   The Villa Ramindra 14, 134 The Villa Ramindra Bang Khen Tha
                   Raeng, Bang Khen, Bangkok 10220
                 </a>
@@ -534,9 +574,9 @@ export const AboutSection1: React.FC<AboutUsProps> = ({ language, img }) => {
         className="px-[7vw] py-[1vw] w-full h-[30vh]"
         style={{
           backgroundImage: `url(${img})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <h1
@@ -558,9 +598,9 @@ export const GallerySection: React.FC<AboutUsProps> = ({ language, img }) => {
         className="px-[7vw] py-[1vw] relative w-full h-full"
         style={{
           backgroundImage: `url(${img})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <h1
@@ -585,9 +625,9 @@ export const OurServiceSection: React.FC<AboutUsProps> = ({
         className="px-[7vw] py-[1vw] relative w-full h-full"
         style={{
           backgroundImage: `url(${img})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <h1
@@ -609,9 +649,9 @@ export const ContactSection: React.FC<AboutUsProps> = ({ language, img }) => {
         className="px-[7vw] py-[1vw] relative w-full h-full"
         style={{
           backgroundImage: `url(${img})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <h1
@@ -723,7 +763,11 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
               }`}
               onClick={() => setSelectedBoothId(booth.title)}
             >
-              <img src={booth.img[0]} alt="#" className="w-20 h-20  xl:w-[167px] xl:h-[167px]" />
+              <img
+                src={booth.img[0]}
+                alt="#"
+                className="w-20 h-20  xl:w-[167px] xl:h-[167px]"
+              />
               <h1 className="text-[10px] xl:text-[18px]">{booth.title}</h1>
             </div>
           ))}
@@ -766,12 +810,16 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
             <div className="w-full h-auto  text-left xl:w-[630px] xl:h-[490px] bg-gray-200 border-l-4 border-black  xl:border-gray-400 ">
               <div className="mt-4 ml-4 mr-4">
                 <div className="h-auto">
-                  <h1 className="text-4xl xl:text-2xl">{selectedBooth?.title}</h1>
+                  <h1 className="text-4xl xl:text-2xl">
+                    {selectedBooth?.title}
+                  </h1>
                 </div>
                 {selectedBooth?.price && selectedBooth?.price.length > 0 && (
                   <div>
                     <h2 className="text-xs mt-6">ราคาเริ่มต้น</h2>
-                    <h1 className="xl:text-xl font-bold xl:font-normal text-3xl mt-4 xl:mt-0">฿ {selectedBooth?.price}</h1>
+                    <h1 className="xl:text-xl font-bold xl:font-normal text-3xl mt-4 xl:mt-0">
+                      ฿ {selectedBooth?.price}
+                    </h1>
                   </div>
                 )}
                 <div className="xl:w-[520px] xl:h-[132px] mt-2 xl:mt-6  w-full mb-5">
@@ -817,7 +865,11 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
                 }`}
                 onClick={() => handleThumbnailClick(index)}
               >
-                <img src={img} alt="" className="w-20 h-20 xl:w-full xl:h-full" />
+                <img
+                  src={img}
+                  alt=""
+                  className="w-20 h-20 xl:w-full xl:h-full"
+                />
               </div>
             ))}
           </div>
@@ -894,8 +946,10 @@ export const ContractComponent: React.FC<AboutUsDescProps> = () => {
           <a href="https://www.google.com/maps/dir//The+Villa+Ramintra+14+134+The+Villa+%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B2-%E0%B8%A7%E0%B8%87%E0%B9%81%E0%B8%AB%E0%B8%A7%E0%B8%99+Tha+Raeng,+Bang+Khen,+Bangkok+10220/@13.8594214,100.6666058,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x311d63299f994771:0xe8a631c6d650331d!2m2!1d100.6666024!2d13.8594292?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">
             <div>
               <p className="font-bold">The Villa Ramindra</p>
-              <p className="w-[238px] text-pretty">The Villa Ramindra 14, 134 The Villa Ramindra Bang Khen Tha
-              Raeng, Bang Khen, Bangkok 10220</p>
+              <p className="w-[238px] text-pretty">
+                The Villa Ramindra 14, 134 The Villa Ramindra Bang Khen Tha
+                Raeng, Bang Khen, Bangkok 10220
+              </p>
             </div>
           </a>
         </div>
@@ -903,9 +957,7 @@ export const ContractComponent: React.FC<AboutUsDescProps> = () => {
           <FacebookOutlinedIcon />
           <div>
             <p className="font-bold">THE BOXXET</p>
-            <a href="https://www.facebook.com/boxxet">
-              facebook.com/boxxet
-            </a>
+            <a href="https://www.facebook.com/boxxet">facebook.com/boxxet</a>
           </div>
         </div>
         <div className="flex items-start gap-2">
@@ -1008,7 +1060,9 @@ export const GalleryComponentPage: React.FC<GalleryProps> = ({
         <div className="flex flex-wrap justify-between items-center w-full max-w-xs sm:max-w-sm mt-10 mb-8">
           <button
             className={`px-4 py-2 bg-gray-200 rounded transition ${
-              currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-300"
+              currentPage === 1
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-gray-300"
             }`}
             onClick={() => {
               setCurrentPage((prev) => Math.max(prev - 1, 1));
@@ -1022,7 +1076,9 @@ export const GalleryComponentPage: React.FC<GalleryProps> = ({
           </span>
           <button
             className={`px-4 py-2 bg-gray-200 rounded transition ${
-              currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-300"
+              currentPage === totalPages
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-gray-300"
             }`}
             onClick={() => {
               setCurrentPage((prev) => Math.min(prev + 1, totalPages));
