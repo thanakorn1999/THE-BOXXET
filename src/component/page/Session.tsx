@@ -5,7 +5,6 @@ import central from "../../assets/page/central.png";
 import theMall from "../../assets/page/the-mall.png";
 import customeAsia from "../../assets/page/customasia.png";
 import theBoxxetIcon from "../../assets/logo/the-boxext.png";
-import facebook from "../../assets/page/facebook.png";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
@@ -32,6 +31,7 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import { GalleryImg } from "../../component/constants/gallery-index.ts";
 import { FaLine } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { FacebookPagePlugin } from "../utils/ComponentsUtil.tsx";
 
 
 
@@ -463,21 +463,17 @@ export const FooterSection: React.FC<CustomerProps> = ({ id, language }) => {
           </div>
 
           {/* Facebook */}
-          <div>
+          <div className="mt-12">
             <h1 className="text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">
               FaceBook
             </h1>
             <div className="mt-4">
-              <img
-                src={facebook}
-                alt="Facebook"
-                className="w-[214px] h-[136px]"
-              />
+              <FacebookPagePlugin/>
             </div>
           </div>
 
           {/* ติดต่อเรา */}
-          <div className="mt-16">
+          <div className="mt-14">
             <h1 className="text-2xl relative after:content-[''] after:block after:w-12 after:h-1 after:bg-yellow-500 after:mt-2">
               {translations[language].contactUs}
             </h1>
@@ -893,14 +889,15 @@ export const ContractComponent: React.FC<AboutUsDescProps> = () => {
           <PhoneIcon />
           <p>095-956-5419, 064-265-9428</p>
         </div>
-        <div className="flex items-start gap-2">
+        <div className="flex items-start gap-2 text-left">
           <LocationOnOutlinedIcon />
           <div>
             <p className="font-bold">The Villa Ramindra</p>
-            <p>ที่อยู่ที่ต้องการแสดง</p>
+            <p className="w-[238px] text-pretty">The Villa Ramindra 14, 134 The Villa Ramindra Bang Khen Tha
+            Raeng, Bang Khen, Bangkok 10220</p>
           </div>
         </div>
-        <div className="flex items-start gap-2">
+        <div className="flex items-start gap-2 text-left">
           <FacebookOutlinedIcon />
           <div>
             <p className="font-bold">THE BOXXET</p>
@@ -986,6 +983,10 @@ export const GalleryComponentPage: React.FC<GalleryProps> = ({
   const currentGallery = GalleryImg.find((g) => g.page === currentPage);
   const selectedImages = currentGallery ? currentGallery.images : [];
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
   return (
     <div id={id} className="container mx-auto h-auto mt-8 px-4">
       <div className="flex flex-col items-center text-center">
@@ -1005,11 +1006,11 @@ export const GalleryComponentPage: React.FC<GalleryProps> = ({
         <div className="flex flex-wrap justify-between items-center w-full max-w-xs sm:max-w-sm mt-10 mb-8">
           <button
             className={`px-4 py-2 bg-gray-200 rounded transition ${
-              currentPage === 1
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-300"
+              currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-300"
             }`}
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            onClick={() => {
+              setCurrentPage((prev) => Math.max(prev - 1, 1));
+            }}
             disabled={currentPage === 1}
           >
             Previous
@@ -1019,13 +1020,11 @@ export const GalleryComponentPage: React.FC<GalleryProps> = ({
           </span>
           <button
             className={`px-4 py-2 bg-gray-200 rounded transition ${
-              currentPage === totalPages
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-300"
+              currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-300"
             }`}
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-            }
+            onClick={() => {
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+            }}
             disabled={currentPage === totalPages}
           >
             Next
