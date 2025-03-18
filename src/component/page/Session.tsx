@@ -32,7 +32,7 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import { GalleryImg } from "../../component/constants/gallery-index.ts";
 import { FaLine } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import useStore from "../../store";
+
 
 
 interface SessionProps {
@@ -53,12 +53,12 @@ export const Session: React.FC<SessionProps> = ({
   return (
     <section
     id={id}
-    className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full  text-center md:text-left py-9"
+    className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full  text-center md:text-left py-9 "
   >
     {/* ส่วนซ้าย: รูป + Title */}
-    <div className="flex flex-col justify-center items-center px-6">
-      <div className="w-[500px]">
-        <h1 className="font-bold sm:text-2xl md:text-3xl lg:text-5xl border-b-4 border-black inline-block px-4">
+    <div className="flex flex-col justify-center items-center px-6 ">
+      <div className="w-full xl:w-[500px] ">
+        <h1 className="font-bold border-b-4 border-black inline-block px-4" style={{ fontSize: "clamp(3rem, 5vw, 3rem)" }}>
           {translations[language].about}
         </h1>
       </div>
@@ -106,10 +106,9 @@ export const OurProject: React.FC<OurProjectProps> = ({
   pic,
 }) => {
   const translations: { [key: string]: Translations } = Constants.translations;
-  const widthLanguage = useStore((state) => state.withLanguage);
 
   return (
-    <section id={id} className={`w-full ${widthLanguage ? "h-[28vh]" : "h-[50vh]"}`}>
+    <section id={id} className={`w-full h-auto`}>
       <div
         className="w-full h-full grid place-items-center"
         style={{
@@ -119,7 +118,7 @@ export const OurProject: React.FC<OurProjectProps> = ({
         }}
       >
         {/* เนื้อหา */}
-        <div className="z-10 flex flex-col items-center text-center w-full max-w-3xl px-6">
+        <div className="z-10 flex flex-col items-center text-center w-full max-w-3xl px-6 py-20">
           <h1
             className="text-customYellow font-bold"
             style={{ fontSize: "clamp(3rem, 5vw, 3rem)" }}
@@ -152,7 +151,7 @@ export const CustomerSection: React.FC<CustomerProps> = ({ id, language }) => {
   return (
     <section
       id={id}
-      className="w-full h-[50vh] flex justify-center items-center mt-8 px-4"
+      className="w-full h-auto flex justify-center items-center mt-8 px-4 pt-20 pb-10"
     >
       <div className="text-center w-full max-w-8xl">
         <h1
@@ -207,7 +206,6 @@ export const ServiceSection: React.FC<ServiceProps> = ({
   const translations: { [key: string]: Translations } = Constants.translations;
   const [hideNav] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const withLanguage = useStore((state) => (state.withLanguage));
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -224,12 +222,12 @@ export const ServiceSection: React.FC<ServiceProps> = ({
 
   if (img) {
     return (
-      <div id={id} className={`relative w-full ${withLanguage ? "h-auto" : "h-[100vh]"} `}>
+      <div id={id} className="relative w-full h-auto pb-20">
         <div>
           <img
             src={img}
             alt="Styled"
-            className="absolute w-full h-full object-cover filter brightness-50 contrast-150"
+            className="absolute w-full h-full object-cover filter brightness-50 contrast-150 pb-0"
           />
           <div className="absolute top-0 left-0 w-full h-full bg-[#09283C] opacity-50"></div>
           <div className="flex flex-col px-[7vw] py-[1vw]">
@@ -336,7 +334,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({
     );
   } else
     return (
-      <div id={id} className={`relative w-full ${withLanguage ? "h-auto" : "h-[80vh]"} mt-8`}>
+      <div id={id} className="relative w-full  mt-8 h-auto pb-20">
         <div>
           <div className="flex flex-col px-[7vw] py-[1vw] justify-start items-center">
             <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-between w-full mt-6">
@@ -734,7 +732,7 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
             </div>
           ))}
         </div>
-        <div className="bg-customYellow w-full h-2"></div>
+        <div className="bg-customYellow w-full md:h-2 h-4 "></div>
         <div className="mt-6">
           <div className="flex flex-col xl:flex-row justify-center items-center gap-8">
             <div className="flex">
@@ -769,9 +767,9 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
               </button>
             </div>
 
-            <div className="w-full h-auto  text-left xl:w-[630px] xl:h-[490px] bg-gray-200 border-l-4 border-black  xl:border-gray-400">
+            <div className="w-full h-auto  text-left xl:w-[630px] xl:h-[490px] bg-gray-200 border-l-4 border-black  xl:border-gray-400 ">
               <div className="mt-4 ml-4 mr-4">
-                <div className="h-9">
+                <div className="h-auto">
                   <h1 className="text-4xl xl:text-2xl">{selectedBooth?.title}</h1>
                 </div>
                 {selectedBooth?.price && selectedBooth?.price.length > 0 && (
@@ -797,7 +795,7 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
                         </ul>
                       )}
                   </div>
-                  <div className="xl:w-[600px] w-full">
+                  <div className="w-full">
                     {selectedBooth?.Implementation &&
                       selectedBooth?.Implementation.length > 0 && (
                         <ButtomBlue

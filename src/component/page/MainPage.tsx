@@ -50,10 +50,7 @@ const MainPage: React.FC = () => {
 
   const IntroSectionOfMainPage = () => {
     return (
-      <div
-        className="absolute flex flex-col items-center justify-center w-full px-4 text-center"
-        style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-      >
+      <div className="relative flex flex-col items-center justify-center w-full px-4 text-center pb-20">
         {/* ข้อความด้านบน */}
         <p className="text-customeWhite font-bold text-2xl sm:text-3xl md:text-5xl leading-tight tracking-wide mt-60 w-full">
           {DESIGN_MESSAGE}
@@ -143,7 +140,7 @@ const MainPage: React.FC = () => {
                   {Button.LetterNavBarButton("#", language, "gallery")}
                 </button>
               </Link>
-              <Link to={"/contract"}>
+              <Link to={"/contact"}>
                 <button>
                   {Button.LetterNavBarButton("#", language, "contactUs")}
                 </button>
@@ -176,11 +173,7 @@ const MainPage: React.FC = () => {
 
   return (
     <div className={`${withLanguage ? "container mx-auto" : ""}`}>
-      <div
-        className={`relative ${
-          withLanguage ? " h-[50vh]" : "h-screen"
-        } bg-gray-900`}
-      >
+      <div className="relative h-auto bg-gray-900">
         <img
           src={imageMainPage}
           alt="Styled"

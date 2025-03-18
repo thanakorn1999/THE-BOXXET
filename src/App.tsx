@@ -9,7 +9,7 @@ import RentalEvent from "./component/page/Rental-Event"
 import ActivityEvent from "./component/page/Activity-Event"
 import ContractPage from "./component/page/Contract"
 import Gallery from "./component/page/GalleryPage"
-import { LanguageProvider } from "./component/utils/ComponentsUtil";
+import { LanguageProvider,ScrollToTop } from "./component/utils/ComponentsUtil";
 
 
 const App: React.FC = () => {
@@ -17,6 +17,7 @@ const App: React.FC = () => {
   return (
     <LanguageProvider>
       <Router>
+      <ScrollToTop/>
       <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
