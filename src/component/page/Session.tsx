@@ -488,10 +488,10 @@ export const FooterSection: React.FC<CustomerProps> = ({ id, language }) => {
               </div>
               <div className="flex items-start gap-2">
                 <PlaceOutlinedIcon />
-                <p className="w-[238px]">
+                <a href="https://www.google.com/maps/dir//The+Villa+Ramintra+14+134+The+Villa+%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B2-%E0%B8%A7%E0%B8%87%E0%B9%81%E0%B8%AB%E0%B8%A7%E0%B8%99+Tha+Raeng,+Bang+Khen,+Bangkok+10220/@13.8594214,100.6666058,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x311d63299f994771:0xe8a631c6d650331d!2m2!1d100.6666024!2d13.8594292?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D" className="w-[238px]">
                   The Villa Ramindra 14, 134 The Villa Ramindra Bang Khen Tha
                   Raeng, Bang Khen, Bangkok 10220
-                </p>
+                </a>
               </div>
             </div>
           </div>
@@ -891,17 +891,19 @@ export const ContractComponent: React.FC<AboutUsDescProps> = () => {
         </div>
         <div className="flex items-start gap-2 text-left">
           <LocationOnOutlinedIcon />
-          <div>
-            <p className="font-bold">The Villa Ramindra</p>
-            <p className="w-[238px] text-pretty">The Villa Ramindra 14, 134 The Villa Ramindra Bang Khen Tha
-            Raeng, Bang Khen, Bangkok 10220</p>
-          </div>
+          <a href="https://www.google.com/maps/dir//The+Villa+Ramintra+14+134+The+Villa+%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B2-%E0%B8%A7%E0%B8%87%E0%B9%81%E0%B8%AB%E0%B8%A7%E0%B8%99+Tha+Raeng,+Bang+Khen,+Bangkok+10220/@13.8594214,100.6666058,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x311d63299f994771:0xe8a631c6d650331d!2m2!1d100.6666024!2d13.8594292?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">
+            <div>
+              <p className="font-bold">The Villa Ramindra</p>
+              <p className="w-[238px] text-pretty">The Villa Ramindra 14, 134 The Villa Ramindra Bang Khen Tha
+              Raeng, Bang Khen, Bangkok 10220</p>
+            </div>
+          </a>
         </div>
         <div className="flex items-start gap-2 text-left">
           <FacebookOutlinedIcon />
           <div>
             <p className="font-bold">THE BOXXET</p>
-            <a href="https://www.facebook.com/boxxet" className="text-blue-500">
+            <a href="https://www.facebook.com/boxxet">
               facebook.com/boxxet
             </a>
           </div>
