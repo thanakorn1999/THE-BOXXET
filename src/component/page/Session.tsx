@@ -90,16 +90,16 @@ export const Session: React.FC<SessionProps> = ({
     //   </div>
     // </section>
     <>
-      <div className="mx-4 mb-5 sm:mx-52 sm:mb-10">
+      <div className="mx-4 mb-5 sm:px-[7vw] sm:mb-10">
         <h1
-          className="font-bold border-b-4 border-black inline-block px-4"
+          className="font-bold border-b-4 border-black inline-block px-4 mt-5"
           style={{ fontSize: "clamp(3rem, 5vw, 3rem)" }}
         >
           {translations[language].about}
         </h1>
         <section id={id}>
           <div className="w-full mt-5">
-            <div className="w-full flex flex-col xl:flex-row ">
+            <div className="w-full flex flex-col xl:flex-row gap-8 ">
               <div className="w-full ">
                 <img
                   src={pic}
@@ -107,7 +107,7 @@ export const Session: React.FC<SessionProps> = ({
                   className="w-full h-auto object-cover rounded-xl shadow-lg"
                 />
               </div>
-              <div className="w-full flex flex-col h-auto ml-4 mt-4 xl:mt-0  ">
+              <div className="w-full flex flex-col h-auto mt-4 xl:mt-0  ">
                 <h1 className="sm:text-xs md:text-xl lg:text-3xl 2xl:text-4xl font-bold">
                   {translations[language].contractUsMainTitle}
                 </h1>
