@@ -104,23 +104,24 @@ export const Session: React.FC<SessionProps> = ({
                 <img
                   src={pic}
                   alt={landing}
-                  className="w-full h-auto object-cover rounded-xl shadow-lg"
+                  className="sm:w-[80%] sm:h-[100%] object-cover rounded-xl shadow-lg"
                 />
               </div>
               <div className="w-full flex flex-col h-auto mt-4 xl:mt-0  ">
-                <h1 className="sm:text-xs md:text-xl lg:text-3xl 2xl:text-4xl font-bold">
+                <h1 className="sm:text-xs md:text-xl lg:text-3xl 2xl:text-4xl font-bold text-center">
                   {translations[language].contractUsMainTitle}
                 </h1>
-                <h2 className="sm:text-xs md:text-xl lg:text-2xl 2xl:text-3xl mt-2">
+                <h2 className="sm:text-xs md:text-xl lg:text-2xl 2xl:text-3xl mt-2 text-center">
                   {translations[language].contractUsSubTitle}
                 </h2>
                 <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-6 leading-relaxed">
                   {translations[language].contractUsdescription}
                 </p>
-                <Link to="/contact">
-                  <button className="text-center w-auto bg-customBlue text-customYellow py-3 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-[clamp(1rem, 2vw, 1.25rem)]">
-                    {translations[language].contactUs}
-                  </button>
+                <Link
+                  to="/contact"
+                  className="text-center w-full bg-customBlue text-customYellow py-3 px-6 rounded-lg hover:bg-customYellow hover:text-customBlue transition-all mt-6 text-[clamp(1rem, 2vw, 1.25rem)]"
+                >
+                  {translations[language].contactUs}
                 </Link>
               </div>
             </div>
@@ -730,6 +731,9 @@ interface BoothProps {
   pageId: string;
 }
 
+
+
+
 export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
   const selectedBoothCategory = BoothData.find((booth) => booth.id === pageId);
   const [selectedBoothId, setSelectedBoothId] = useState<string>(
@@ -739,6 +743,8 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
   const selectedBooth = selectedBoothCategory?.data.find(
     (booth) => booth.title === selectedBoothId
   );
+  console.log(selectedBooth);
+  
   const [selectedImageIndex, setSelectedImagIndex] = useState(0);
 
   const swiperRef = useRef<any>(null);
@@ -807,39 +813,65 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
               </button>
             </div>
 
-            <div className="w-full h-auto  text-left xl:w-[630px] xl:h-[490px] bg-gray-200 border-l-4 border-black  xl:border-gray-400 ">
-              <div className="mt-4 ml-4 mr-4">
+            <div className="w-full min-h-[490px] text-left xl:w-[630px] bg-gray-200 border-l-4 border-black xl:border-gray-400 flex flex-col">
+              <div className="p-4 flex flex-col flex-grow">
                 <div className="h-auto">
-                  <h1 className="text-4xl xl:text-2xl">
+                  <h1 className="text-4xl ">
                     {selectedBooth?.title}
                   </h1>
                 </div>
+
                 {selectedBooth?.price && selectedBooth?.price.length > 0 && (
                   <div>
-                    <h2 className="text-xs mt-6">ราคาเริ่มต้น</h2>
-                    <h1 className="xl:text-xl font-bold xl:font-normal text-3xl mt-4 xl:mt-0">
-                      ฿ {selectedBooth?.price}
+                    <h2 className=" text-sm md:text-base mt-6">ราคาเริ่มต้น</h2>
+                    <h1 className="md:text-4xl font-bold text-3xl mt-4">
+                    {selectedBooth.price}
                     </h1>
                   </div>
                 )}
-                <div className="xl:w-[520px] xl:h-[132px] mt-2 xl:mt-6  w-full mb-5">
+                    {selectedBooth?.title2 && selectedBooth?.title2.length > 0 && (
+                      <h1 className="lg:text-xl mt-4 xl:mt-8 px-5 font-bold ">
+                        {selectedBooth?.title2}
+                      </h1>
+                    )}
+
+                <div className="mt-2 xl:mt-6 w-full flex-grow">
                   {selectedBooth?.descriptionTitle &&
                     selectedBooth?.descriptionTitle.length > 0 && (
-                      <h1 className="xl:text-xs ml-5 mt-4 xl:mt-0">
+                      <h1 className="lg:text-xl mt-4 xl:mt-0 px-5">
                         {selectedBooth?.descriptionTitle}
                       </h1>
                     )}
-                  <div className="xl:w-[488px] h-[154px] w-full">
+
+                
+
+                  {/* Description (Mobile View) */}
+                  <div className="xl:w-[488px] h-auto w-full md:hidden block">
                     {selectedBooth?.Description &&
                       selectedBooth.Description.length > 0 && (
-                        <ul className="list-disc list-inside ml-5 mt-3 max-h-40 overflow-y-auto xl:border xl:border-gray-300 rounded-md xl:p-2">
+                        <ul className="list-disc list-inside ml-5 mt-3 xl:border xl:border-gray-300 rounded-md xl:p-2">
                           {selectedBooth?.Description?.map((item, index) => (
                             <li key={index}>{item}</li>
                           ))}
                         </ul>
                       )}
                   </div>
-                  <div className="w-full">
+
+                  {/* Description (Desktop View) */}
+                  <div className="w-full flex flex-col xl:flex-row items-end justify-end pr-5">
+                    <div className="w-[80%] md:block hidden">
+                      {selectedBooth?.Description &&
+                        selectedBooth.Description.length > 0 && (
+                          <ul className="list-disc list-inside mt-3 xl:border xl:border-gray-300 rounded-md xl:p-2">
+                            {selectedBooth?.Description?.map((item, index) => (
+                              <li key={index}>{item}</li>
+                            ))}
+                          </ul>
+                        )}
+                    </div>
+                  </div>
+                  {/* Implementation Button */}
+                  <div className="w-full mt-4">
                     {selectedBooth?.Implementation &&
                       selectedBooth?.Implementation.length > 0 && (
                         <ButtomBlue
@@ -847,14 +879,16 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
                         />
                       )}
                   </div>
-                  <div className="flex mt-6 justify-center items-center">
-                    <ContractButtom />
-                  </div>
+                </div>
+
+                {/* Contract Button ที่อยู่ล่างสุด */}
+                <div className="mt-auto flex justify-center items-center">
+                  <ContractButtom />
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex mt-20 justify-start">
+          <div className="flex mt-5 justify-start">
             {selectedBooth?.img.map((img, index) => (
               <div
                 key={index}
