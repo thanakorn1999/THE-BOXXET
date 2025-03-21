@@ -114,7 +114,7 @@ export const Session: React.FC<SessionProps> = ({
                 <h2 className="sm:text-xs md:text-xl lg:text-2xl 2xl:text-3xl mt-2 text-center">
                   {translations[language].contractUsSubTitle}
                 </h2>
-                <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-6 leading-relaxed">
+                <p className="text-gray-600 mt-6 text-pretty whitespace-normal indent-8 leading-relaxed">
                   {translations[language].contractUsdescription}
                 </p>
                 <Link
@@ -409,7 +409,7 @@ export const ServiceSection: React.FC<ServiceProps> = ({
                     nextEl: hideNav ? null : ".swiper-button-next-custom",
                   }}
                   autoplay={{
-                    delay: 3000,
+                    delay: 6000,
                     disableOnInteraction: false,
                   }}
                   modules={[Pagination, Navigation, FreeMode, Autoplay]}
