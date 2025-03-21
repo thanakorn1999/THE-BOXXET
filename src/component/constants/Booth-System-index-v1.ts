@@ -218,7 +218,7 @@ export const BoothData = [
     data: [
       {
         title: "Event Rental",
-        price: null,
+        price: "50",
         descriptionTitle: null,
         Description: [
           "โต๊ะหน้าขาว ขนาด 120x60 เซนติเมตร ราคา 400 บาท/ตัว",
@@ -230,13 +230,14 @@ export const BoothData = [
           "ขนาดใหญ่ ราคา 1,650 บาท/ตัว",
           "ปลั๊กไฟพ่วงภายในบูธ ราคา 300 บาท/ชิ้น",
         ],
-        Implementation: null,
+        Implementation:
+          "สนใจเช่าอุปกรณ์อื่นๆ สามารถติดต่อเพื่อสอบถามเพิ่มเติมกับเราได้เลย",
         img: [
-          RentalEventImg1,
-          RentalEventImg2,
-          RentalEventImg3,
-          RentalEventImg4,
-          RentalEventImg5,
+          RentalEventImg5, //1
+          RentalEventImg4, //2
+          RentalEventImg1, //3
+          RentalEventImg2, //4
+          RentalEventImg3, //5
         ],
       },
     ],
