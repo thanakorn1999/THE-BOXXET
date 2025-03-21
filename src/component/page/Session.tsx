@@ -871,7 +871,7 @@ export const BoothsSection: React.FC<BoothProps> = ({ id, pageId }) => {
                     </div>
                   </div>
                   {/* Implementation Button */}
-                  <div className="w-full mt-4">
+                  <div className="w-full my-4 ">
                     {selectedBooth?.Implementation &&
                       selectedBooth?.Implementation.length > 0 && (
                         <ButtomBlue
